@@ -1,6 +1,14 @@
 # Useful Unity Functions
 
-- InvokeRepeating ```public void InvokeRepeating(string methodName, float time, float repeatRate);```
+## InvokeRepeating 
+Useful for things that need to repeat at regular intervals.
+```C#
+public void InvokeRepeating(string methodName, float time, float repeatRate);
+```
 
-- StartCoroutine ```public Coroutine StartCoroutine(IEnumerator routine);```
+## StartCoroutine
+Useful for things that need timers, or functions that need to be threaded.
+```C#
+public Coroutine StartCoroutine(IEnumerator routine);
+```
 
