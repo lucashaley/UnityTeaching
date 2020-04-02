@@ -1,3 +1,4 @@
 # Useful Unity Functions
 
-- InvokeRepeating
+- InvokeRepeating ```public void InvokeRepeating(string methodName, float time, float repeatRate);```
+
