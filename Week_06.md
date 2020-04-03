@@ -97,7 +97,9 @@ Call it Player01Mat.
 
 - Create a new Cube GameObject and call it Ground
 - Manually enter its Transform values as follows:
-![Ground transform settings]()
+
+![Ground transform settings](images/week06_groundTransform.png)
+
 - Go to your Materials folder and drag the YellowDark material out and drop it on the cube to set this as its material.
 
 ## Check Player Transform
@@ -112,7 +114,7 @@ The droid should be sitting on the Ground cube neatly like this:
 
 ## Setting up the Camera
 
-> PLEASE NOTE: in the PDF it has information about using an isometric view. We are not allowing that view as, it causes too many issues than it offers benefits.
+> PLEASE NOTE: in the PDF it has information about using an isometric view. We are not allowing that view, as it causes too many issues than it offers benefits.
 
 - Rename your **Main Camera** in the Hierarchy to **CameraTopDown**.
 - Select CameraTowpDown.
@@ -129,3 +131,65 @@ The droid should be sitting on the Ground cube neatly like this:
 - Save your scene
 
 ## Listening for Input
+
+> The Unity **InputManager** allows the developer to define the project’s various input axes and actions.
+
+- Via the top menu bar, go to **Edit » Project Settings**
+- In the Inspector, choose **Input Manager**.
+
+![Input Manager](images/week06_inputManager.png)
+
+> This is the InputManager. If you expand the Horizontal and Vertical dropdowns, you can see that horizontal input is made via the ← and → arrow keys as well as A and D—while vertical input is made via the ↑ and ↓ arrow keys as well as W and S.
+
+> In our previous project, we used an existing script to control our character.
+This time, we’ll be making our own.
+
+> Let’s being by getting our game to listening for user input, so that we can move our character.
+
+- In your Scripts folder, create a new C# script and call it PlayerControl.
+- Add your namespace.
+- Attach the script to the **Player01** GameObject (as a component in the Inspector).
+- Adjust and add to the script as follows:
+
+```C#
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace LucasHaley
+{
+  public class PlayerControl : MonoBehaviour
+  {
+    // Update gets called once per frame
+    void Update ()
+    {
+      // This declares a private variable of type 'float', names
+      // it 'vertical' and get the vertical axis values, i.e.
+      // up and down arrows or w and s keys
+      float vertical = Input.GetAxis("Vertical");
+
+      // if vertical DOES NOT equal zero (as a float)
+      if (vertical != 0f)
+      {
+        // Test for input
+        Debug.Log("Vertical value: " + vertical);
+      }
+    }
+  }
+}
+```
+
+- Save the script and test the game. Any vertical input (up/down cursor keys, W/S keys, analog sticks, etc.) will log a vertical value between -1 and 1.
+- Now, edit the above code so that, *instead of printing out the values in the console*, the vertical input value is instead added to the Player’s current Z-position – ie. makes Player01 move. Begin by ‘commenting out’ the Debug.Log we wrote, and adding the following line:
+
+```
+      // Test for input
+      // Debug.Log("Vertical value: " + vertical);
+      transform.position += Vector3.forward * vertical;
+```
+
+- Save the script and test it out. The player character should now move along the Z axis when vertical input is received.
+
+> Note: This approach will prove a little problematic once obstacles are added to the scene—but we’ll leave it like this for now.
+
+- Save your project.
