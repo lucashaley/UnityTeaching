@@ -42,6 +42,8 @@ You’ll find a range of initial assets on Stream. Download all of those now and
 
 1. Create a project in the regular way
 
+![Unity create dialog](images/week06_create.png)
+
 2. Once Unity has loaded, in the Assets root folder, create a **TopDownShooter** folder, and 10 new folders and name them as follows:
 - TopDownShooter
     - Audio
@@ -56,7 +58,9 @@ You’ll find a range of initial assets on Stream. Download all of those now and
     - Textures
 
 > Pay careful attention to capitalisation and spelling.
-    
+
+![Initial folder setup](images/week06_folders.png)
+
 3. Import the TopDownShooter_Assets.unitypackage from the Stream site.
 
 > Note how your assets are placed into the correct folders.
