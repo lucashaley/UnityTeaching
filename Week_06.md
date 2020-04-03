@@ -193,3 +193,48 @@ namespace LucasHaley
 > Note: This approach will prove a little problematic once obstacles are added to the scene—but we’ll leave it like this for now.
 
 - Save your project.
+
+## Dealing with Obstacles
+
+> The player needs to respond correctly to the environment—ie. it should somewhat adhere to the gamer’s expectations of physics. An obvious example: *Player01* shouldn’t pass through walls. This will take several steps to get right.
+
+### Add a Wall
+
+- Add a new cube to your scene and call rename it to **Wall**.
+- Scale it to about (10,1,1) and move it into position in front of **Player01**.
+- Apply the material **BuildingMetal** to the wall.
+- Save and test — the player will pass through the wall.
+
+### Allowing Collisions
+
+_ Add a BoxCollider to Player01.
+- Hit the ![Edit Collider]() button to edit the collider.
+- Use the lil’ green dots on the collider to reshape it to fit **Player01**.
+
+> Note: Don’t have the box extend to cover the gun barrel as this will interfere with bullet instantiation. Raise the base of the collider so that it’s a little bit above the ground.
+
+![Player collider]()
+
+- Save the project.
+
+### Rigidbody Physics
+
+> The Rigidbody component hooks a gameObject into the Unity Physics system.
+
+> Instead of using a Rigidbody to enact gravity, we’ll use one to constrain the Player’s movement. We can also use the Rigidbody to tap into additional physics features such as AddForce.
+
+- Select Player01 in the Hierarchy.
+- Add a **Rigidbody** component to the **Player01** GameObject
+(**Add Component » Physics » Rigidbody**)
+- Uncheck the **Use Gravity** option.
+- Set Constraints as you see here:
+
+![Player Constraints]()
+
+> We’re allowing the player to spin on its Y axis and move laterally - but not up and down.
+
+- If you test the game now, you’ll see that the player still has free movement up and down - but, despite adding a BoxCollider, we’re can still move through the wall.
+
+> This is because we are using the **Transform()** function, which ignores physics and collisions.
+
+> Instead, we'll use **Forces**.
