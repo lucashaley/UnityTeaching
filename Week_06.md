@@ -65,6 +65,8 @@ You’ll find a range of initial assets on Stream. Download all of those now and
 
 > Note how your assets are placed into the correct folders.
 
-4. In the top file menu Save As and call the scene Level01Workshop_v01
+4. In the top file menu Save As and call the scene *Level00_00*.
 
 > Make sure it’s saved to the **TopDownShooter>Scenes** folder.
+
+![Initial folder setup](images/week06_saveScene.png)
