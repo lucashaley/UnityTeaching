@@ -185,7 +185,7 @@ namespace LucasHaley
 ```
       // Test for input
       // Debug.Log("Vertical value: " + vertical);
-      transform.position += Vector3.forward * vertical;
+      transform.Transform(Vector3.forward * vertical);
 ```
 
 - Save the script and test it out. The player character should now move along the Z axis when vertical input is received.
