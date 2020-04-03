@@ -83,3 +83,49 @@ Call it Player01Mat.
 - Hit the **Metallic** circle selctor and choose the black Player01_1001_Metallic texture. The model should now have a reflective gun barrel and base.
 - Hit the Normal Map circle selector and choose the purple Player01_1001_Normal texture. This will have very little effect, in this case, but can have a profound effect in some cases. Low-poly rocks, for example, can suddenly look photorealistic at this point.
 - You should now have something like this in your Scene view:
+
+![Finished player material](images/week06_playerMaterial.png)
+
+## Create a Player01 Prefab
+> Unity has a Prefab asset type that allows you to store a GameObject object complete with its components and properties. The prefab acts as a template from which you can create new object instances in the scene. Any edits made to a prefab asset are immediately reflected in all instances produced from it but you can also override components and settings for each instance individually.
+
+- Simply drag the Player01 (Parent) GameObject from the **Hierarchy** into your **Prefabs** folder.
+
+> Now, changes made to Player01 (and applied) in this scene will cascade throughout all instances of Player01 in your project. We’ll learn more about Prefabs soon.
+
+## Add the Ground
+
+- Create a new Cube GameObject and call it Ground
+- Manually enter its Transform values as follows:
+![Ground transform settings]()
+- Go to your Materials folder and drag the YellowDark material out and drop it on the cube to set this as its material.
+
+## Check Player Transform
+
+- Before we move on, double-check that both the **Droid** and **Player01** GameObjects in the Project tab each have their transform settings set like this:
+
+![Player transform settings](images/week06_playerTransform.png)
+
+The droid should be sitting on the Ground cube neatly like this:
+
+![Player sitting nicely](images/week06_playerSitting.png)
+
+## Setting up the Camera
+
+> PLEASE NOTE: in the PDF it has information about using an isometric view. We are not allowing that view as, it causes too many issues than it offers benefits.
+
+- Rename your **Main Camera** in the Hierarchy to **CameraTopDown**.
+- Select CameraTowpDown.
+- Set its Transform properties as follows:
+
+![Camera transform settings](images/week06_cameraTransform.png)
+
+- In the Camera component (in the Inspector), switch the Projection method from Perspective to Orthographic.
+- Adjusting the Size property effectively adjusts the camera’s Field of View. Tweak this value to achieve a good frame on your player and its surroundings. I recommend a value of about 6.
+
+> You can see in the Camera Preview insert (in the Viewport) what this looks like. Testing your game will obviously give you an even better idea of how this looks.
+
+- Drag the camera into your **Prefabs** folder to save it as a prefab.
+- Save your scene
+
+## Listening for Input
