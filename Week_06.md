@@ -38,7 +38,7 @@ As before - (but this time, with stricter adherence) - we’ll run to concurrent
 
 You’ll find a range of initial assets on Stream. Download all of those now and let’s make a start on our workshop projects.
 
-## Setting Up
+## Set Up
 
 1. Create a project in the regular way
 
@@ -70,3 +70,16 @@ You’ll find a range of initial assets on Stream. Download all of those now and
 > Make sure it’s saved to the **TopDownShooter>Scenes** folder.
 
 ![Initial folder setup](images/week06_saveScene.png)
+
+## Create a Player01 Material
+
+- Go to your Materials and creat a subfolder (alongside Basic) called Characters.
+- Inside that folder, right click and Create » Material.
+Call it Player01Mat.
+- Select DroidModel in the Hierarchy, look over in the Inspector and make sure the Materials dropdown is expanded.
+- Hit the Element 0 circle selector &#10687; and choose **Player01Mat** from the material options. This way we can observe changes in the model as we build that material.
+- Select Player01Mat in its folder in the Project tab, and look to the Inspector.
+- Hit the **Albedo** circle selector and choose the green Player01_1001_BaseColor texture. The model should now have a basic paint-job in the Scene window.
+- Hit the **Metallic** circle selctor and choose the black Player01_1001_Metallic texture. The model should now have a reflective gun barrel and base.
+- Hit the Normal Map circle selector and choose the purple Player01_1001_Normal texture. This will have very little effect, in this case, but can have a profound effect in some cases. Low-poly rocks, for example, can suddenly look photorealistic at this point.
+- You should now have something like this in your Scene view:
