@@ -201,7 +201,7 @@ namespace LucasHaley
 ### Add a Wall
 
 - Add a new cube to your scene and call rename it to **Wall**.
-- Scale it to about (10,1,1) and move it into position in front of **Player01**.
+- Scale it to about `(10,1,1)` and move it into position in front of **Player01**.
 - Apply the material **BuildingMetal** to the wall.
 - Save and test — the player will pass through the wall.
 
