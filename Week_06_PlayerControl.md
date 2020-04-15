@@ -404,7 +404,7 @@ Variable | Duty
 ray | Origin of the ray (in this case, the main camera).
 hitInfo | Information about the hit (coordinates) is assigned to this variable. This is an advanced C# feature, where a method can change an input parameter.
 maxDistance | Maximum distance the ray registers collisions (in this case, infinity).
-layerMask | Selectively ignores objects (in this case, only layer 8 is detected). This uses bitmasking techniques, which is a very old but still used technique.
+layerMask | Selectively ignores objects (in this case, only layer 8 is detected). This uses [bitmasking](https://docs.unity3d.com/Manual/Layers.html) techniques, which is a very old but still used technique.
 
 > Don’t panic if this doesn’t make sense. At this level, it’s okay to simply smile and nod. We’re nearly done.
 
