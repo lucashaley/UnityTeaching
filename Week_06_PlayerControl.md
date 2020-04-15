@@ -81,12 +81,12 @@ namespace LucasHaley
 ### Allowing Collisions
 
 _ Add a BoxCollider to Player01.
-- Hit the ![Edit Collider]() button to edit the collider.
+- Hit the ![Edit Collider](images/week06_editCollider.png) button to edit the collider.
 - Use the lil’ green dots on the collider to reshape it to fit **Player01**.
 
 > Note: Don’t have the box extend to cover the gun barrel as this will interfere with bullet instantiation. Raise the base of the collider so that it’s a little bit above the ground.
 
-![Player collider]()
+![Player collider](images/week06_playerCollider.png)
 
 - Save the project.
 
@@ -102,7 +102,7 @@ _ Add a BoxCollider to Player01.
 - Uncheck the **Use Gravity** option.
 - Set Constraints as you see here:
 
-![Player Constraints]()
+![Player Constraints](images/week06_playerConstraints.png)
 
 > We’re allowing the player to spin on its Y axis and move laterally - but not up and down.
 
@@ -369,7 +369,7 @@ rbody.AddForce(new Vector3(horizontal, 0f, vertical) * thrust);
 - Adjust the box collider’s Size settings to `50, 1, 50`.
 - Set the MouseTracker’s Transform properties as follows. This matches the position of the ground. The closer the MouseTracker object is to your ground plane, the more accurate the results will be.
 
-![Mouse tracker]()
+![Mouse tracker](images/week06_mouseTracker.png)
 
 - Above the Inspector, find the Layers dropdown (it’s currently set to Default). Expand the dropdown and choose **Add Layer...**
 - In the Layers section of the resulting window, type *MouseTracker* in the User Layer 8 field. This adds a custom layer.
