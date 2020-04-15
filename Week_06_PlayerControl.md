@@ -425,7 +425,6 @@ intercepts any object on the MouseTracker layer (in this case, just the MouseTra
 ## Complete PlayerControl Script
 
 ```C#
-```C#
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
