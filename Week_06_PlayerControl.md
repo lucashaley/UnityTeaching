@@ -413,8 +413,7 @@ layerMask | Selectively ignores objects (in this case, only layer 8 is detected)
 MainCamera. ie.:
 - Select CameraTopDown (if it is in your Hierarchy).
 - In the top-left of the Inspector is a Tag dropdown. If this doesn’t say
-MainCamera, expand the dropdown menu and apply the MainCamera tag. - Select Camera Isomeetric (if it is in your Hierarchy).
-- Apply the MainCamera tag, as above.
+MainCamera, expand the dropdown menu and apply the MainCamera tag.
 - Now you can test it out!
 
 > The player should now rotate on its Y axis to face the mouse cursor. This is because transform.LookAt(mouseHit.point) points to where the mouse’s raycast
