@@ -1,4 +1,4 @@
-# Week 06: Top-Down Shooter
+# Week 06: Top-Down Shooter: Project Setup
 
 ## Introduction
 
@@ -73,14 +73,14 @@ You’ll find a range of initial assets on Stream. Download all of those now and
 
 ## Create a Player01 Material
 
-- Go to your Materials and creat a subfolder (alongside Basic) called Characters.
+- Go to your Materials and create a subfolder (alongside Basic) called Characters.
 - Inside that folder, right click and Create » Material.
 Call it Player01Mat.
 - Select DroidModel in the Hierarchy, look over in the Inspector and make sure the Materials dropdown is expanded.
 - Hit the Element 0 circle selector &#10687; and choose **Player01Mat** from the material options. This way we can observe changes in the model as we build that material.
 - Select Player01Mat in its folder in the Project tab, and look to the Inspector.
 - Hit the **Albedo** circle selector and choose the green Player01_1001_BaseColor texture. The model should now have a basic paint-job in the Scene window.
-- Hit the **Metallic** circle selctor and choose the black Player01_1001_Metallic texture. The model should now have a reflective gun barrel and base.
+- Hit the **Metallic** circle selector and choose the black Player01_1001_Metallic texture. The model should now have a reflective gun barrel and base.
 - Hit the Normal Map circle selector and choose the purple Player01_1001_Normal texture. This will have very little effect, in this case, but can have a profound effect in some cases. Low-poly rocks, for example, can suddenly look photorealistic at this point.
 - You should now have something like this in your Scene view:
 
@@ -117,7 +117,7 @@ The droid should be sitting on the Ground cube neatly like this:
 > PLEASE NOTE: in the PDF it has information about using an isometric view. We are not allowing that view, as it causes too many issues than it offers benefits.
 
 - Rename your **Main Camera** in the Hierarchy to **CameraTopDown**.
-- Select CameraTowpDown.
+- Select CameraTopDown.
 - Set its Transform properties as follows:
 
 ![Camera transform settings](images/week06_cameraTransform.png)
@@ -130,111 +130,4 @@ The droid should be sitting on the Ground cube neatly like this:
 - Drag the camera into your **Prefabs** folder to save it as a prefab.
 - Save your scene
 
-## Listening for Input
-
-> The Unity **InputManager** allows the developer to define the project’s various input axes and actions.
-
-- Via the top menu bar, go to **Edit » Project Settings**
-- In the Inspector, choose **Input Manager**.
-
-![Input Manager](images/week06_inputManager.png)
-
-> This is the InputManager. If you expand the Horizontal and Vertical dropdowns, you can see that horizontal input is made via the ← and → arrow keys as well as A and D—while vertical input is made via the ↑ and ↓ arrow keys as well as W and S.
-
-> In our previous project, we used an existing script to control our character.
-This time, we’ll be making our own.
-
-> Let’s being by getting our game to listening for user input, so that we can move our character.
-
-- In your Scripts folder, create a new C# script and call it PlayerControl.
-- Add your namespace.
-- Attach the script to the **Player01** GameObject (as a component in the Inspector).
-- Adjust and add to the script as follows:
-
-```C#
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace LucasHaley
-{
-  public class PlayerControl : MonoBehaviour
-  {
-    // Update gets called once per frame
-    void Update ()
-    {
-      // This declares a private variable of type 'float', names
-      // it 'vertical' and get the vertical axis values, i.e.
-      // up and down arrows or w and s keys
-      float vertical = Input.GetAxis("Vertical");
-
-      // if vertical DOES NOT equal zero (as a float)
-      if (vertical != 0f)
-      {
-        // Test for input
-        Debug.Log("Vertical value: " + vertical);
-      }
-    }
-  }
-}
-```
-
-- Save the script and test the game. Any vertical input (up/down cursor keys, W/S keys, analog sticks, etc.) will log a vertical value between -1 and 1.
-- Now, edit the above code so that, *instead of printing out the values in the console*, the vertical input value is instead added to the Player’s current Z-position – ie. makes Player01 move. Begin by ‘commenting out’ the Debug.Log we wrote, and adding the following line:
-
-```
-      // Test for input
-      // Debug.Log("Vertical value: " + vertical);
-      transform.Transform(Vector3.forward * vertical);
-```
-
-- Save the script and test it out. The player character should now move along the Z axis when vertical input is received.
-
-> Note: This approach will prove a little problematic once obstacles are added to the scene—but we’ll leave it like this for now.
-
-- Save your project.
-
-## Dealing with Obstacles
-
-> The player needs to respond correctly to the environment—ie. it should somewhat adhere to the gamer’s expectations of physics. An obvious example: *Player01* shouldn’t pass through walls. This will take several steps to get right.
-
-### Add a Wall
-
-- Add a new cube to your scene and call rename it to **Wall**.
-- Scale it to about `(10,1,1)` and move it into position in front of **Player01**.
-- Apply the material **BuildingMetal** to the wall.
-- Save and test — the player will pass through the wall.
-
-### Allowing Collisions
-
-_ Add a BoxCollider to Player01.
-- Hit the ![Edit Collider]() button to edit the collider.
-- Use the lil’ green dots on the collider to reshape it to fit **Player01**.
-
-> Note: Don’t have the box extend to cover the gun barrel as this will interfere with bullet instantiation. Raise the base of the collider so that it’s a little bit above the ground.
-
-![Player collider]()
-
-- Save the project.
-
-### Rigidbody Physics
-
-> The Rigidbody component hooks a gameObject into the Unity Physics system.
-
-> Instead of using a Rigidbody to enact gravity, we’ll use one to constrain the Player’s movement. We can also use the Rigidbody to tap into additional physics features such as AddForce.
-
-- Select Player01 in the Hierarchy.
-- Add a **Rigidbody** component to the **Player01** GameObject
-(**Add Component » Physics » Rigidbody**)
-- Uncheck the **Use Gravity** option.
-- Set Constraints as you see here:
-
-![Player Constraints]()
-
-> We’re allowing the player to spin on its Y axis and move laterally - but not up and down.
-
-- If you test the game now, you’ll see that the player still has free movement up and down - but, despite adding a BoxCollider, we’re can still move through the wall.
-
-> This is because we are using the **Transform()** function, which ignores physics and collisions.
-
-> Instead, we'll use **Forces**.
+>  Cool! Next step is to create a script to handle player control. We'll see that in the next workshop handout.
