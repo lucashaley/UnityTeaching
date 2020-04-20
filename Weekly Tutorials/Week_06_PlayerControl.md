@@ -80,7 +80,7 @@ namespace LucasHaley
 
 ### Allowing Collisions
 
-_ Add a BoxCollider to Player01.
+- Add a BoxCollider to Player01.
 - Hit the ![Edit Collider](images/week06_editCollider.png) button to edit the collider.
 - Use the lil’ green dots on the collider to reshape it to fit **Player01**.
 
