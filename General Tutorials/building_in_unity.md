@@ -30,4 +30,5 @@ The order of the scenes is important – the first scene (marked `0` on the far 
 5. Make sure to save it somewhere useful. Depending upon your platform, you may end up with both an executable file and a data folder.
 
 > On Mac, your entire game will be one application.
+
 > On Windows, you'll get an exe and a **data folder**. Make sure you keep the **data folder** in the same place as the executable. Your game will not  play without it.
