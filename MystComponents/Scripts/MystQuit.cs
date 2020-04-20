@@ -2,7 +2,7 @@
 
 /*
 
-This script quts the game.
+This script quits the game.
 Add this script to a gameObject, or use the prefab supplied.
 
 */
@@ -31,13 +31,13 @@ namespace Myst
             }
         }
 
-        //make sure you have gizmos turned on in the inspector to see the red sphere
-        //you will find it at the top right of the view port
+        // make sure you have gizmos turned on in the inspector to see the red sphere
+        // you will find it at the top right of the view port
         void OnDrawGizmos()
         {
             // Draw a red sphere at the transform's position
             Gizmos.color = Color.red;
-            Gizmos.DrawSphere(transform.position, 1);
+            Gizmos.DrawSphere(transform.position, 0.5);
         }
     }
 }
