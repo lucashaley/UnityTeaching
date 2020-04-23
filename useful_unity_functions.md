@@ -1,3 +1,7 @@
+# Useful Unity Comment Formatting
+
+Check out https://docs.microsoft.com/en-us/dotnet/csharp/codedoc
+
 # Useful Unity Keywords
 
 ### Private
