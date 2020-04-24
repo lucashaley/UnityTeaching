@@ -28,6 +28,15 @@ protected GameObject player;
 
 ### 
 
+# Useful Unity Components
+
+## Transform
+Clearly, `Transform` is an essential component. But here are some useful features:
+
+### localRotation
+You'll need to use `localRotation` to explicitly assign rotation values to **child** objects.
+> https://docs.unity3d.com/ScriptReference/Transform-localRotation.html
+
 # Useful Unity Functions
 
 ### InvokeRepeating 
