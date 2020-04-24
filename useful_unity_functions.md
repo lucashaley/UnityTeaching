@@ -36,6 +36,9 @@ Clearly, `Transform` is an essential component. But here are some useful feature
 ### localRotation
 You'll need to use `localRotation` to explicitly assign rotation values to **child** objects.
 > https://docs.unity3d.com/ScriptReference/Transform-localRotation.html
+```C#
+transform.localRotation = Quaternion.Euler(Vector3.up * scale);
+```
 
 # Useful Unity Functions
 
