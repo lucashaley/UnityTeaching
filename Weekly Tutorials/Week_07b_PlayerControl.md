@@ -1,4 +1,4 @@
-# Week 06: Top-Down Shooter: Player Control
+# Week 07: Top-Down Shooter: Player Control
 
 ## Introduction
 In the last handout, we made a new Unity project, and set up a player and camera for our top-down shooter. This workshop we'll make the player move.
