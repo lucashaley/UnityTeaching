@@ -1,4 +1,4 @@
-# Week 06: Top-Down Shooter: Project Setup
+# Week 07: Top-Down Shooter: Project Setup
 
 ## Introduction
 
