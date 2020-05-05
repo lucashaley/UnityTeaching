@@ -18,17 +18,17 @@ For this project, you are encouraged to work in pairs. Two people is the default
 
 In certain circumstances, you may work solo or in a group of three—but these arrangements are to made by special negotiation with your tutor. All partners need to be in your own workshop.
 
-We suggest you try to work with someone that has complimentary skills to your own. For example, if you love your coding, find an artist who focuses on environment and props. If you love your modeling and animation and want to focus on that, you may be able to form a group of 3.
+We suggest you try to work with someone that has complimentary skills to your own. For example, if you love your coding, find an artist who focuses on environment and props.
 
-As before - (but this time, with stricter adherence) - we’ll run to concurrent projects.
+As before - (but this time, with stricter adherence) - we’ll run two concurrent scenes.
 
-1. SOLO WORKSHOP PROJECT
+1. SOLO WORKSHOP SCENE
 
     - keep this safe and backed up on your Media Server drive
     - add to it each week
     - use this project for experimentation
 
-2. GROUP ASSIGNMENT PROJECT
+2. GROUP ASSIGNMENT SCENE
 
    - Worked on by both team members
    - Each member is expected to give 7 hours of self-directed time to the project per week. ie. a pair will contribute 14 hours to each project per week as ‘homework’.
@@ -36,7 +36,7 @@ As before - (but this time, with stricter adherence) - we’ll run to concurrent
 
 ### Initial Assets
 
-You’ll find a range of initial assets on Stream. Download all of those now and let’s make a start on our workshop projects.
+You’ll find a range of initial assets [here](https://github.com/lucashaley/UnityTeaching/TopDownAssets). Download the assets in Week 07 now and let’s make a start on our workshop projects.
 
 ## Set Up
 
@@ -61,9 +61,7 @@ You’ll find a range of initial assets on Stream. Download all of those now and
 
 ![Initial folder setup](images/week07_folders.png)
 
-3. Import the TopDownShooter_Assets.unitypackage from the Stream site.
-
-> Note how your assets are placed into the correct folders.
+3. Import the assets from the GitHub archive, and place your files in the appropriate directory.
 
 4. In the top file menu Save As and call the scene *Level00_00*.
 
