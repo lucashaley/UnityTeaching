@@ -10,7 +10,7 @@ In the last handout, we made a new Unity project, and set up a player and camera
 - Via the top menu bar, go to **Edit » Project Settings**
 - In the Inspector, choose **Input Manager**.
 
-![Input Manager](images/week06_inputManager.png)
+![Input Manager](images/week07_inputManager.png)
 
 > This is the InputManager. If you expand the Horizontal and Vertical dropdowns, you can see that horizontal input is made via the ← and → arrow keys as well as A and D—while vertical input is made via the ↑ and ↓ arrow keys as well as W and S.
 
@@ -81,12 +81,12 @@ namespace LucasHaley
 ### Allowing Collisions
 
 - Add a BoxCollider to Player01.
-- Hit the ![Edit Collider](images/week06_editCollider.png) button to edit the collider.
+- Hit the ![Edit Collider](images/week07_editCollider.png) button to edit the collider.
 - Use the lil’ green dots on the collider to reshape it to fit **Player01**.
 
 > Note: Don’t have the box extend to cover the gun barrel as this will interfere with bullet instantiation. Raise the base of the collider so that it’s a little bit above the ground.
 
-![Player collider](images/week06_playerCollider.png)
+![Player collider](images/week07_playerCollider.png)
 
 - Save the project.
 
@@ -102,7 +102,7 @@ namespace LucasHaley
 - Uncheck the **Use Gravity** option.
 - Set Constraints as you see here:
 
-![Player Constraints](images/week06_playerConstraints.png)
+![Player Constraints](images/week07_playerConstraints.png)
 
 > We’re allowing the player to spin on its Y axis and move laterally - but not up and down.
 
@@ -369,7 +369,7 @@ rbody.AddForce(new Vector3(horizontal, 0f, vertical) * thrust);
 - Adjust the box collider’s Size settings to `50, 1, 50`.
 - Set the MouseTracker’s Transform properties as follows. This matches the position of the ground. The closer the MouseTracker object is to your ground plane, the more accurate the results will be.
 
-![Mouse tracker](images/week06_mouseTracker.png)
+![Mouse tracker](images/week07_mouseTracker.png)
 
 - Above the Inspector, find the Layers dropdown (it’s currently set to Default). Expand the dropdown and choose **Add Layer...**
 - In the Layers section of the resulting window, type *MouseTracker* in the User Layer 8 field. This adds a custom layer.
