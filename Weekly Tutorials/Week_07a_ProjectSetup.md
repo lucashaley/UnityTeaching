@@ -36,7 +36,7 @@ As before - (but this time, with stricter adherence) - we’ll run two concurren
 
 ### Initial Assets
 
-You’ll find a range of initial assets [here](https://github.com/lucashaley/UnityTeaching/TopDownAssets). Download the assets in Week 07 now and let’s make a start on our workshop projects.
+You’ll find a range of initial assets [here](https://github.com/lucashaley/UnityTeaching/tree/master/TopDownAssets). Download the assets in Week 07 now and let’s make a start on our workshop projects.
 
 ## Set Up
 
