@@ -224,7 +224,7 @@ When asked whether to apply the change to its children; say yes.
 void Start()
 {
     //	Gives the bullet forward force when instantiated
-    gameObject.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward \* speed, ForceMode.Impulse);
+    gameObject.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * speed, ForceMode.Impulse);
 }
 ```
 
@@ -284,25 +284,25 @@ void Update()
 
 > Currently, the bullets never disappear once instantiated, thereby occupying memory forever and potentially crashing the game... So we’ll add a ‘projectile lifetime’ variable and a ‘destroy’ method to the PlayerBullet script.
 
--	Open the `PlayerBullet` script.
--	Beneath your existing `speed` variable, add the following variable:
+- Open the `PlayerBullet` script.
+- Beneath your existing `speed` variable, add the following variable:
 
 ```C#
 
 ```
 
--	In your  Start()  method, add this ‘Destroy’ code:
+- In your  Start()  method, add this ‘Destroy’ code:
 
 ```C#
 
 ```
 
--	Now, after the  Start()  method, add an `OnCollisionEnter` handler to deal with bullet impacts:
+- Now, after the  Start()  method, add an `OnCollisionEnter` handler to deal with bullet impacts:
 
 ```C#
 
 ```
 
--	Save and test.
+- Save and test.
 
 > Bullets should now disappear on contact with the wall and the boxes. Bullets that don’t collide with any objects will also evaporate after one second.
