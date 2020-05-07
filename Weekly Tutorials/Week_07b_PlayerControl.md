@@ -58,7 +58,7 @@ namespace LucasHaley
 ```
       // Test for input
       // Debug.Log("Vertical value: " + vertical);
-      transform.Transform(Vector3.forward * vertical);
+      transform.Translate(Vector3.forward * vertical);
 ```
 
 - Save the script and test it out. The player character should now move along the Z axis when vertical input is received.
@@ -144,7 +144,7 @@ namespace LucasHaley
       {
         // Test for input
         // Debug.Log("Vertical value: " + vertical);
-        // transform.Transform(Vector3.forward * vertical);
+        // transform.Translate(Vector3.forward * vertical);
         GetComponent<Rigidbody>().AddForce(Vector3.forward * vertical);
       }
     }
@@ -192,7 +192,7 @@ namespace LucasHaley
       {
         // Test for input
         // Debug.Log("Horizontal value: " + horizontal);
-        // transform.Transform(Vector3.right * horizontal);
+        // transform.Translate(Vector3.right * horizontal);
         GetComponent<Rigidbody>().AddForce(Vector3.right * horizontal);
       }
 
@@ -265,7 +265,7 @@ if (horizontal != 0f)
 {
   // Test for input
   // Debug.Log("Horizontal value: " + horizontal);
-  // transform.Transform(Vector3.right * horizontal);
+  // transform.Translate(Vector3.right * horizontal);
   rbody.AddForce(Vector3.right * horizontal);
 }
 ```
