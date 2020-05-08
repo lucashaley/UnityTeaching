@@ -1,3 +1,7 @@
+# Useful Unity Comment Formatting
+
+Check out https://docs.microsoft.com/en-us/dotnet/csharp/codedoc
+
 # Useful Unity Keywords
 
 ### Private
@@ -23,6 +27,18 @@ protected GameObject player;
 ### Abstract
 
 ### 
+
+# Useful Unity Components
+
+## Transform
+Clearly, `Transform` is an essential component. But here are some useful features:
+
+### localRotation
+You'll need to use `localRotation` to explicitly assign rotation values to **child** objects.
+> https://docs.unity3d.com/ScriptReference/Transform-localRotation.html
+```C#
+transform.localRotation = Quaternion.Euler(Vector3.up * scale);
+```
 
 # Useful Unity Functions
 
