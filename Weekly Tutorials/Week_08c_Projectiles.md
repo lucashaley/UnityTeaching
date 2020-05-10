@@ -288,19 +288,43 @@ void Update()
 - Beneath your existing `speed` variable, add the following variable:
 
 ```C#
-
+public class PlayerBullet : MonoBehaviour
+	{
+		[Header(“BULLET SETTINGS”)]
+		public float speed = 100;
+        public float bulletLifetime = 1f;
 ```
 
 - In your  Start()  method, add this ‘Destroy’ code:
 
 ```C#
+void Start()
+		{
+			//	Gives the bullet forward force when instantiated
+			gameObject.GetComponent<Rigidbody>().AddRelativeForce
+			(Vector3.forward * speed, ForceMode.Impulse);
+
+            // Destroy the bullet after an amount of time
+            Destroy(gameObject, bulletLifetime);
+		}
+	}
 
 ```
 
 - Now, after the  Start()  method, add an `OnCollisionEnter` handler to deal with bullet impacts:
 
 ```C#
+            // Destroy the bullet after an amount of time
+            Destroy (gameObject, bulletLifetime);
+		}
 
+        void OnCollisionEnter(Collision other)
+        {
+            // Destroy the bullet
+            Destroy(gameObject);
+        }
+	}
+}
 ```
 
 - Save and test.
