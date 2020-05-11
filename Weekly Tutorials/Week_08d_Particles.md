@@ -45,7 +45,7 @@ Our projectile system is functional but it could use some additional polish. Weâ
 
 - Go into your Materials folder, and create a subfolder called Particle.
 
-- Open the Particle folder, right-click, Import New Asset and import the FlareParticleMaterial from the Stream downloads.
+- Open the Particle folder, right-click, Import New Asset and import the FlareParticleMaterial from the GitHub downloads.
 
 - Reselect ProjectileOrigin in the Hierarchy.
 
