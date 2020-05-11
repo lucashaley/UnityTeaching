@@ -148,7 +148,7 @@ public class PlayerBullet : MonoBehaviour
     void Start()
     {
         //	Gives the bullet forward force when instantiated
-        gameObject.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward \* speed);
+        gameObject.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * speed);
     }
 }
 ```
