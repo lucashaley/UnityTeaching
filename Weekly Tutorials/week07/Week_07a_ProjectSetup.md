@@ -18,17 +18,17 @@ For this project, you are encouraged to work in pairs. Two people is the default
 
 In certain circumstances, you may work solo or in a group of three—but these arrangements are to made by special negotiation with your tutor. All partners need to be in your own workshop.
 
-We suggest you try to work with someone that has complimentary skills to your own. For example, if you love your coding, find an artist who focuses on environment and props. If you love your modeling and animation and want to focus on that, you may be able to form a group of 3.
+We suggest you try to work with someone that has complimentary skills to your own. For example, if you love your coding, find an artist who focuses on environment and props.
 
-As before - (but this time, with stricter adherence) - we’ll run to concurrent projects.
+As before - (but this time, with stricter adherence) - we’ll run two concurrent scenes.
 
-1. SOLO WORKSHOP PROJECT
+1. SOLO WORKSHOP SCENE
 
     - keep this safe and backed up on your Media Server drive
     - add to it each week
     - use this project for experimentation
 
-2. GROUP ASSIGNMENT PROJECT
+2. GROUP ASSIGNMENT SCENE
 
    - Worked on by both team members
    - Each member is expected to give 7 hours of self-directed time to the project per week. ie. a pair will contribute 14 hours to each project per week as ‘homework’.
@@ -36,13 +36,13 @@ As before - (but this time, with stricter adherence) - we’ll run to concurrent
 
 ### Initial Assets
 
-You’ll find a range of initial assets on Stream. Download all of those now and let’s make a start on our workshop projects.
+You’ll find a range of initial assets [here](https://github.com/lucashaley/UnityTeaching/tree/master/TopDownAssets). Download the assets in Week 07 now and let’s make a start on our workshop projects.
 
 ## Set Up
 
 1. Create a project in the regular way
 
-![Unity create dialog](images/week06_create.png)
+![Unity create dialog](images/week07_create.png)
 
 2. Once Unity has loaded, in the Assets root folder, create a **TopDownShooter** folder, and 10 new folders and name them as follows:
 - TopDownShooter
@@ -59,17 +59,15 @@ You’ll find a range of initial assets on Stream. Download all of those now and
 
 > Pay careful attention to capitalisation and spelling.
 
-![Initial folder setup](images/week06_folders.png)
+![Initial folder setup](images/week07_folders.png)
 
-3. Import the TopDownShooter_Assets.unitypackage from the Stream site.
-
-> Note how your assets are placed into the correct folders.
+3. Import the assets from the GitHub archive, and place your files in the appropriate directory.
 
 4. In the top file menu Save As and call the scene *Level00_00*.
 
 > Make sure it’s saved to the **TopDownShooter>Scenes** folder.
 
-![Initial folder setup](images/week06_saveScene.png)
+![Initial folder setup](images/week07_saveScene.png)
 
 ## Create a Player01 Material
 
@@ -84,7 +82,7 @@ Call it Player01Mat.
 - Hit the Normal Map circle selector and choose the purple Player01_1001_Normal texture. This will have very little effect, in this case, but can have a profound effect in some cases. Low-poly rocks, for example, can suddenly look photorealistic at this point.
 - You should now have something like this in your Scene view:
 
-![Finished player material](images/week06_playerMaterial.png)
+![Finished player material](images/week07_playerMaterial.png)
 
 ## Create a Player01 Prefab
 > Unity has a Prefab asset type that allows you to store a GameObject object complete with its components and properties. The prefab acts as a template from which you can create new object instances in the scene. Any edits made to a prefab asset are immediately reflected in all instances produced from it but you can also override components and settings for each instance individually.
@@ -98,7 +96,7 @@ Call it Player01Mat.
 - Create a new Cube GameObject and call it Ground
 - Manually enter its Transform values as follows:
 
-![Ground transform settings](images/week06_groundTransform.png)
+![Ground transform settings](images/week07_groundTransform.png)
 
 - Go to your Materials folder and drag the YellowDark material out and drop it on the cube to set this as its material.
 
@@ -106,11 +104,11 @@ Call it Player01Mat.
 
 - Before we move on, double-check that both the **Droid** and **Player01** GameObjects in the Project tab each have their transform settings set like this:
 
-![Player transform settings](images/week06_playerTransform.png)
+![Player transform settings](images/week07_playerTransform.png)
 
 The droid should be sitting on the Ground cube neatly like this:
 
-![Player sitting nicely](images/week06_playerSitting.png)
+![Player sitting nicely](images/week07_playerSitting.png)
 
 ## Setting up the Camera
 
@@ -120,7 +118,7 @@ The droid should be sitting on the Ground cube neatly like this:
 - Select CameraTopDown.
 - Set its Transform properties as follows:
 
-![Camera transform settings](images/week06_cameraTransform.png)
+![Camera transform settings](images/week07_cameraTransform.png)
 
 - In the Camera component (in the Inspector), switch the Projection method from Perspective to Orthographic.
 - Adjusting the Size property effectively adjusts the camera’s Field of View. Tweak this value to achieve a good frame on your player and its surroundings. I recommend a value of about 6.
