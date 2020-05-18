@@ -48,7 +48,7 @@ We’ll make it so that the value of  effectsTimer  counts backwards from the va
 
 -	Make the indicated changes to your Update method:
 
-```
+```C#
 // Update is called once per frame
 void Update()
 {
@@ -84,7 +84,7 @@ _Fire1_ input will start a countdown from the value of effectsDisplayTime. When 
 
 -	Add a line to the end of your  FireBullet  method that turns on the light—and add that DisableEffects  method—(which will turn off the light):
 
-```
+```C#
 void FireBullet()
 {
   // Testing that the fire method is being called
@@ -133,7 +133,7 @@ component). But we can just leave it empty, as we’ll load this dynamically thr
 -	Open your **FireProjectile** script.
 -	Add public references (of type _AudioClip)_ for those two new audio samples and a timeBetweenLandMines  variable, like so:
 
-```
+```C#
 public class FireProjectile : MonoBehaviour
 {
   [Header(“PUBLIC REFERENCES”)]
@@ -152,7 +152,7 @@ public class FireProjectile : MonoBehaviour
 
 -	Add a private variable of type _AudioSource_, (called _audioSource_) and provide a value in a new  Start  method.
 
-```
+```C#
 // PRIVATE VARIABLES:
 float timer;
 float effectsTimer;
@@ -170,7 +170,7 @@ void Update()
 
 -	If _Fire1_ input is received, set _gunSound_ as the current AudioClip ... :
 
-```
+```C#
 void Update()
 {
   // Tie timers to the game clock
@@ -189,7 +189,7 @@ void Update()
 
 -	.. then play that clip at the end of the  FireBullet  method:
 
-```
+```C#
 void FireBullet()
 {
   // Testing that the fire method is being called
@@ -214,7 +214,7 @@ void FireBullet()
 
 -	Now, we need to capture _Fire2_ (RMB) input and set _landMineSound_ as the current AudioClip. Add to your  Update  method as indicated:
 
-```
+```C#
 void Update()
 {
   // Tie timers to the game clock
@@ -260,7 +260,7 @@ We’re nearly done with the code for this. We only need to add a  PlaceMine  me
 
 -	Just after your  FireBullet  method, add a  PlaceMine  method:
 
-```
+```C#
 void PlaceMine()
 {
 // Play the landmine deploy sound
@@ -271,7 +271,7 @@ audioSource.Play();
 
 -	Call the  PlaceMine  method from the  Update  method when _Fire2_ input is received:
 
-```
+```C#
 //	If Fire2 input is received ..
 if (Input.GetButton(“Fire2”) && timer >= timeBetweenLandMines)
 {
