@@ -27,7 +27,7 @@ We’ll re-enable it through script.
 -	Open your **FireProjectile** script and add the following header and variables:
 
 
-```
+```C#
 public class FireProjectile : MonoBehaviour
 {
   [Header(“PUBLIC REFERENCES”)]
