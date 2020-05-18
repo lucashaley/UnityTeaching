@@ -49,7 +49,7 @@ health and damage system.
 -	**Save** the scripts.
 -	We need to add some new references to our **FireProjectile** script:
 
-```
+```C#
 public class FireProjectile : MonoBehaviour
 {
   [Header(“PUBLIC REFERENCES”)]
@@ -69,7 +69,7 @@ public class FireProjectile : MonoBehaviour
 
 -	Instantiate the mine at the given location (we’ll use an Empty GameObject for this):
 
-```
+```C#
 void PlaceMine()
 {
   // Play the landmine deploy sound

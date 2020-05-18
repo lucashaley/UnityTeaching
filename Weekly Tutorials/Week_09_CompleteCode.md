@@ -1,5 +1,5 @@
-# Week 09: Top-Down Shooter: Completed Fireprojectile script 
-```
+# Week 09: Top-Down Shooter: Completed Fireprojectile script
+```C#
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
