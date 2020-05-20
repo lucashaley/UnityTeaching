@@ -24,7 +24,7 @@ namespace ManPac
     // PRIVATE VARIABLES:
     float timer;
     float effectsTimer;
-    AudioSource audioSource
+    AudioSource audioSource;
 
     void Start ()
     {

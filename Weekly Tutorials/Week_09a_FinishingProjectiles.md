@@ -156,7 +156,7 @@ public class FireProjectile : MonoBehaviour
 // PRIVATE VARIABLES:
 float timer;
 float effectsTimer;
-AudioSource audioSource
+AudioSource audioSource;
 
 void Start ()
 {

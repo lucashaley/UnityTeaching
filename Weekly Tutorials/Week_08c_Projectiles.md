@@ -291,7 +291,7 @@ void Update()
 public class PlayerBullet : MonoBehaviour
 	{
 		[Header(“BULLET SETTINGS”)]
-		public float speed = 100;
+		public float speed = 10;
         public float bulletLifetime = 1f;
 ```
 
