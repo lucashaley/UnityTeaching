@@ -24,7 +24,7 @@ namespace ManPac
     // PRIVATE VARIABLES:
     float timer;
     float effectsTimer;
-    AudioSource audioSource
+    AudioSource audioSource;
 
     void Start ()
     {
@@ -39,7 +39,7 @@ namespace ManPac
       timer += Time.deltaTime;
 
       //	If Fire1 input is received ..
-      if (Input.GetButton(“Fire1”) && timer >= timeBetweenBullets)
+      if (Input.GetButton(“Fire1” && timer >= timeBetweenBullets))
       {
         // Set ‘gunSound’ as the current audio clip
         audioSource.clip = gunSound;
@@ -55,7 +55,7 @@ namespace ManPac
       }
 
       //	If Fire2 input is received ..
-      if (Input.GetButton(“Fire2”) && timer >= timeBetweenLandMines)
+      if (Input.GetButton(“Fire2” && timer >= timeBetweenLandMines))
       {
         // Set ‘landMineSound’ as the current audio clip
         audioSource.clip = landMineSound;

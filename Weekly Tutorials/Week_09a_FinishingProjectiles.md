@@ -57,7 +57,7 @@ void Update()
   effectsTimer -= Time.deltaTime;	// counts down
 
   //	If Fire1 input is received ..
-  if (Input.GetButton(“Fire1”) && timer >= timeBetweenBullets)
+  if (Input.GetButton(“Fire1” && timer >= timeBetweenBullets))
   {
     // Call the ‘fire’ method
     FireBullet();
@@ -156,7 +156,7 @@ public class FireProjectile : MonoBehaviour
 // PRIVATE VARIABLES:
 float timer;
 float effectsTimer;
-AudioSource audioSource
+AudioSource audioSource;
 
 void Start ()
 {
@@ -178,7 +178,7 @@ void Update()
   effectsTimer -= Time.deltaTime;	    // counts down
 
   //	If Fire1 input is received ..
-  if (Input.GetButton(“Fire1”) && timer >= timeBetweenBullets)
+  if (Input.GetButton(“Fire1” && timer >= timeBetweenBullets))
   {
     // Set ‘gunSound’ as the current audio clip
     audioSource.clip = gunSound;
@@ -222,7 +222,7 @@ void Update()
   effectsTimer -= Time.deltaTime;	  // counts down
 
   //	If Fire1 input is received ..
-  if (Input.GetButton(“Fire1”) && timer >= timeBetweenBullets)
+  if (Input.GetButton(“Fire1” && timer >= timeBetweenBullets))
   {
     // Set ‘gunSound’ as the current audio clip
     audioSource.clip = gunSound;
@@ -238,7 +238,7 @@ void Update()
   }
 
   //	If Fire2 input is received ..
-  if (Input.GetButton(“Fire2”) && timer >= timeBetweenLandMines)
+  if (Input.GetButton(“Fire2” && timer >= timeBetweenLandMines))
   {
     // Set ‘landMineSound’ as the current audio clip
     audioSource.clip = landMineSound;
@@ -273,7 +273,7 @@ audioSource.Play();
 
 ```C#
 //	If Fire2 input is received ..
-if (Input.GetButton(“Fire2”) && timer >= timeBetweenLandMines)
+if (Input.GetButton(“Fire2” && timer >= timeBetweenLandMines))
 {
   // Set ‘landMineSound’ as the current audio clip
   audioSource.clip = landMineSound;
