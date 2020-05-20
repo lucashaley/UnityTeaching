@@ -57,7 +57,7 @@ namespace TopDownShooter
 			timer += Time.deltaTime;
 
 			//	If Fire1 input is received ..
-			if (Input.GetButton(“Fire1”) && timer >= timeBetweenBullets)
+			if (Input.GetButton(“Fire1” && timer >= timeBetweenBullets))
 			{
 				// Call the ‘fire’ method
 				FireBullet();
