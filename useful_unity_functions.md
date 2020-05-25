@@ -39,6 +39,9 @@ You'll need to use `localRotation` to explicitly assign rotation values to **chi
 ```C#
 transform.localRotation = Quaternion.Euler(Vector3.up * scale);
 ```
+## Time
+Likewise, `Time` is also super important.
+> https://docs.unity3d.com/ScriptReference/Time.html
 
 # Useful Unity Functions
 
