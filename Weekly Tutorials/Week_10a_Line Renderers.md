@@ -1,4 +1,4 @@
-# Week 09: Top-Down Shooter: Line Renderers
+# Week 10: Top-Down Shooter: Line Renderers
 
 ## SETTING UP THE LINE RENDERER
 
