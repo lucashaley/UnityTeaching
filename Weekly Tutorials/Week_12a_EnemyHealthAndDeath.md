@@ -1,4 +1,4 @@
-# Week 11: Top-Down Shooter: Enemy Health and Death
+# Week 12: Top-Down Shooter: Enemy Health and Death
 
 ## ENEMY HEALTH + DEATH (AKA. PAYBACK TIME)
 
@@ -98,4 +98,4 @@ of _Unit Critical Damage Level_.
 Smoke should also start bellowing from the unit when the _Damage Critical_ flag is lit.
 
 
-![Rectangle_71757.png](images/Rectangle_71757.png) 
+![Rectangle_71757.png](images/Rectangle_71757.png)

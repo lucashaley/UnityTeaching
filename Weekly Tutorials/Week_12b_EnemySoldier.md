@@ -1,4 +1,4 @@
-# Week 11: Top-Down Shooter: ENEMY SOLDIERS
+# Week 12: Top-Down Shooter: ENEMY SOLDIERS
 
 It’s happening. We’re adding the soldier unit\! This bad guy will have the ability to seek you out and attack you. To achieve this, the new unit will need a Nav Mesh Agent component and we’ll need to build an actual NavMesh that the Soldier will use to navigate the map.
 

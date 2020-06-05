@@ -1,4 +1,4 @@
-# Week 11: Top-Down Shooter: ADDING A MAIN MENU
+# Week 12: Top-Down Shooter: ADDING A MAIN MENU
 
 ## ADDING A MAIN MENU
 
