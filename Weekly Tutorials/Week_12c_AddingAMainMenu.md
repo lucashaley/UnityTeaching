@@ -103,8 +103,8 @@ This gives us access to the SceneManagement command library.
 ```C#
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Engine;
-using Unity.Engine.SceneManagement;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace BertQ
 {
