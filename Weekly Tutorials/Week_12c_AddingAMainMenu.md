@@ -121,7 +121,7 @@ namespace BertQ
     public void QuitGame()
     {
       // This simulates the quit (as you can only quit from a built game)
-      Debug.Log(“Game exited”);
+      Debug.Log("Game exited");
 
       // This closes the application
       Application.Quit();
