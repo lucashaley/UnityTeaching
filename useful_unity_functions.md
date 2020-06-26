@@ -26,7 +26,7 @@ protected GameObject player;
 
 ### Abstract
 
-### 
+### Sealed
 
 # Useful Unity Components
 
@@ -56,4 +56,7 @@ Useful for things that need timers, or functions that need to be threaded.
 ```C#
 public Coroutine StartCoroutine(IEnumerator routine);
 ```
+# Useful Unity Helpers
 
+### Assertions
+> https://docs.unity3d.com/ScriptReference/Assertions.Assert.html
