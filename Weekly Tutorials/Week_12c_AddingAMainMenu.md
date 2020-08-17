@@ -108,7 +108,7 @@ using UnityEngine.SceneManagement;
 
 namespace BertQ
 {
-  public class MainMenu : Monobehaviour
+  public class MainMenu : MonoBehaviour
   {
     public string startLevel;		// Reference name for the first level of the game
 
