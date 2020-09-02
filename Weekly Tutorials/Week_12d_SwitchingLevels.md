@@ -26,10 +26,10 @@ We’ll start by setting up initial values in the MainMenu script (eg. starting 
 ```C#
 public class MainMenu : Monobehaviour
 {
-  [Header(“PUBLIC REFERENCES”)]
+  [Header("PUBLIC REFERENCES")]
   public string startLevel;			// Reference name for the first level of the game
 
-  [Header(“PERSISTENT SETTINGS”)]
+  [Header("PERSISTENT SETTINGS")]
   public int startLives = 123;		// Number of lives to begin the game with
   public int startScore = 123;		// Player score to begin the game with
   public int startHealth = 123;		// Health Level to begin the game with
@@ -40,13 +40,13 @@ public class MainMenu : Monobehaviour
     SceneManager.LoadScene(startLevel);
 
     // This sets the initial value of PlayerCurrentLives
-    PlayerPrefs.SetInt(“PlayerCurrentLives”, startLives);
+    PlayerPrefs.SetInt("PlayerCurrentLives", startLives);
 
     // This sets the initial value of PlayerCurrentScore
-    PlayerPrefs.SetInt(“PlayerCurrentScore”, startScore);
+    PlayerPrefs.SetInt("PlayerCurrentScore", startScore);
 
     // This sets the initial value of PlayerCurrentLives
-    PlayerPrefs.SetInt(“PlayerCurrentHealth”, startHealth);
+    PlayerPrefs.SetInt("PlayerCurrentHealth", startHealth);
   }
 ```
 
@@ -61,7 +61,7 @@ The _PlayerPrefs_ class allows us to store integers, floats and strings between 
 -	Add the following two variables to the **PlayerHealth** script:
 
 ```C#
-[Header(“UI / SETTINGS”)]
+[Header("UI / SETTINGS")]
 public int lives;				      // The player’s starting number of lives
 public int score;				      // The player’s starting score
 public int health = 1000;			  // The player’s staring health
@@ -77,13 +77,13 @@ public float powerEfficiency = 10.0f;  // 3. How slowly the droid loses power (h
 void Start()
 {
   // This sets the initial value of lives (inherited from MainMenu)
-  lives = PlayerPrefs.GetInt(“PlayerCurrentLives”);
+  lives = PlayerPrefs.GetInt("PlayerCurrentLives");
 
   // This sets the initial value of score (inherited from MainMenu)
-  score = PlayerPrefs.GetInt(“PlayerCurrentScore”);
+  score = PlayerPrefs.GetInt("PlayerCurrentScore");
 
   // This sets the initial value of health (inherited from MainMenu)
-  health = PlayerPrefs.GetInt(“PlayerCurrentHealth”);
+  health = PlayerPrefs.GetInt("PlayerCurrentHealth");
   healthSlider.value = health; 	// This updates the healthSlider
 
   // This makes sure the smoke effect won’t play on start
@@ -93,7 +93,7 @@ void Start()
   damageCritical = false;
 
   // Testing
-  // Debug.Log(“PowerUsage = ” + powerUsage);
+  // Debug.Log("PowerUsage = " + powerUsage);
 }
 ```
 
@@ -116,7 +116,7 @@ ie.:
 - 	In the **MainMenu** script’s  _NewGame_  method, add:
 ```C#
 // This sets the initial value of PlayerCurrentPower
-PlayerPrefs.SetInt(“PlayerCurrentPower”, startPower);
+PlayerPrefs.SetInt("PlayerCurrentPower", startPower);
 ```
 
 -	**Save** this script.
@@ -124,14 +124,14 @@ PlayerPrefs.SetInt(“PlayerCurrentPower”, startPower);
 -	In the **PlayerHealth** script’s  _Start_  method, add:
 ```C#
 // This sets the initial value of power (inherited from MainMenu)						
-power = PlayerPrefs.GetInt(“PlayerCurrentPower”);
+power = PlayerPrefs.GetInt("PlayerCurrentPower");
 powerSlider.value = power;   // This updates the powerSlider
 ```
 
 -	In the  _Update_  method, in the first  if  condition
 (just after the _powerSlider_ is upated), add:
 ```C#
-PlayerPrefs.SetInt(“PlayerCurrentPower”, startPower);
+PlayerPrefs.SetInt("PlayerCurrentPower", startPower);
 ```
 
 --------------------------------------------------------------------
@@ -180,7 +180,7 @@ public void TakeDamage(int damage)
   healthSlider.value = health;
 
   // Update PlayerPrefs
-  PlayerPrefs.SetInt(“PlayerCurrentHealth”, health);
+  PlayerPrefs.SetInt("PlayerCurrentHealth", health);
 
   // If player health is below critial damage value..
   if (health <= criticalDamageLevel)
@@ -200,9 +200,9 @@ public void AddHealth(int healthValue)
   healthSlider.value = health;
 
   // Update PlayerPrefs
-  PlayerPrefs.SetInt(“PlayerCurrentHealth”, health);
+  PlayerPrefs.SetInt("PlayerCurrentHealth", health);
 
-  // Debug.Log(“Health received from pickup: “ + healthValue);
+  // Debug.Log("Health received from pickup: " + healthValue);
 
   // If health goes above critical damage level
   if (health >= criticalDamageLevel)
@@ -221,10 +221,10 @@ public void resetHealth()
 {  
   health = startingHealth;				               // reset health
   healthSlider.value = health;				           // update health slider
-  PlayerPrefs.SetInt(“PlayerCurrentHealth”, health); 	// update PlayerPrefs
+  PlayerPrefs.SetInt("PlayerCurrentHealth", health); 	// update PlayerPrefs
   power = startingPower;					             // reset power
   powerSlider.value = power;				             // update power slider
-  PlayerPrefs.SetInt(“PlayerCurrentPower”, power); 	  // update PlayerPrefs
+  PlayerPrefs.SetInt("PlayerCurrentPower", power); 	  // update PlayerPrefs
   damagecritial = false;					             // reset critical damage
   isDead = false;					                    // lower the isDead flag
 }
@@ -254,8 +254,8 @@ void Awake()
   // Set up initial values
   playerController = GetComponent<PlayerControl>();
   fireProjectile = GetComponent<FireProjectile>();
-  resetHealthOnDeath = PlayerPrefs.GetInt(“PlayerCurrentHealth”);
-  resetPowerOnDeath = PlayerPrefs.GetInt(“PlayerCurrentPower”);
+  resetHealthOnDeath = PlayerPrefs.GetInt("PlayerCurrentHealth");
+  resetPowerOnDeath = PlayerPrefs.GetInt("PlayerCurrentPower");
   powerUsage = (powerEfficiency / 10);
 }
 ```
@@ -273,10 +273,10 @@ void resetHealth()
 {
   health = resetHealthOnDeath;				           // reset health
   healthSlider.value = health;				           // update health slider
-  PlayerPrefs.SetInt(“PlayerCurrentHealth”, health); 	// update PlayerPrefs
+  PlayerPrefs.SetInt("PlayerCurrentHealth", health); 	// update PlayerPrefs
   power = resetPowerOnDeath;				             // reset power
   powerSlider.value = power;				             // update power slider
-  PlayerPrefs.SetInt(“PlayerCurrentPower”, power); 	  // update PlayerPrefs
+  PlayerPrefs.SetInt("PlayerCurrentPower", power); 	  // update PlayerPrefs
   damagecritial = false;					             // reset critical damage
   isDead = false;					                    // lower the isDead flag
 }
@@ -348,12 +348,12 @@ namespace RiviaGeraltOf
     private void OnTriggerEnter(Collider other)
     {
       // Testing
-      Debug.Log(“Trigger triggered”);
+      Debug.Log("Trigger triggered");
 
-      if(other.gameObject.tag == “Player”)		  // Make sure only the player can trigger level change
+      if(other.gameObject.tag == "Player")		  // Make sure only the player can trigger level change
       {
         // Testing
-        Debug.Log(“Player detected”);
+        Debug.Log("Player detected");
 
         // Load level 2
         SceneManager.LoadScene(level02);
