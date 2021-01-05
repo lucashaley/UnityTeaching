@@ -1,9 +1,3 @@
----
-title: Unit 00: Orientation
-version: 0.1
-author: Lucas Haley
----
-
 # Unit 00: Orientation
 
 ## Introduction
@@ -62,6 +56,24 @@ From the selection of templates, choose the "Massey" template, and let Unity ope
 
 > Remember that any changes you make while the game is in the play mode will not be saved when you exit the play mode.
 
+### Moving around the scene
+
+You'll need to be able to move around in the 3d space of the scene. If you've used other 3d applications (Maya, etc.), this should be familiar.
+
+The **Q** key activates the Hand tool, which allows you to pan around in the scene. Holding down the **Alt/Option** key while using this tool allows you to rotate the scene.
+
+You can also activate this same functionality by holding down the **Alt/Option** key, which puts you into the scene rotate mode. You can add the **Control/Command** key to pan.
+
+If you're familiar with wasd-style games, you can also get around that way. Hold down the **right mouse button**, and use **WASD** to move around and the mouse to rotate. **Q** and **E** move you down and up. Holding **Shift** speeds up the camera.
+
+## Focusing
+
+You can focus on an object by either double-clicking it in the Hierarchy, or by selecting it in the Scene and hitting the **F** key. This also makes the scene rotate around that object.
+
 ## Wrap-Up
 
+You should get as comfortable as possible in navigating around the Unity Scene. Keep exploring and trying different key strokes.
+
 ## Further Material
+
+- [Unity Manual: Navigating](https://docs.unity3d.com/Manual/SceneViewNavigation.html)
