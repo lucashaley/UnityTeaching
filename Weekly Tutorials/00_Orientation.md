@@ -1,3 +1,9 @@
+---
+title: Unit 00: Orientation
+version: 0.1
+author: Lucas Haley
+---
+
 # Unit 00: Orientation
 
 ## Introduction
@@ -29,11 +35,32 @@ From the selection of templates, choose the "Massey" template, and let Unity ope
 #### UI panels
 
 1. Scene
+
+    This is where you can manipulate objects in a 3d space.
+
 2. Project
+
+    These are all of the assets available in your project.
+
 3. Heirarchy
+
+    These are the assets/GameObjects that are currently in your scene.
+
 4. Inspector
+
+    This is a contextual panel, allowing you to manipulate the currently selected objects.
+
 5. Game
+
+    Behind the Scene panel is the Game panel, which shows what your game actually looks like during play.
+
 6. Playmode
+
+    The play button starts and stops the game.
+
+> Pay attention to this button -- it acts as a toggle, so to stop the game you must push the Play button again. The Pause button is used during debugging.
+
+> Remember that any changes you make while the game is in the play mode will not be saved when you exit the play mode.
 
 ## Wrap-Up
 
