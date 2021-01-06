@@ -1,4 +1,15 @@
-# Unit 00: Orientation
+# Unit 00: Orientation <!-- omit in toc -->
+
+- [Introduction](#introduction)
+- [Goal](#goal)
+- [Process](#process)
+  - [Opening Unity](#opening-unity)
+  - [The User Interface](#the-user-interface)
+    - [UI panels](#ui-panels)
+  - [Moving around the scene](#moving-around-the-scene)
+- [Focusing](#focusing)
+- [Wrap-Up](#wrap-up)
+- [Further Material](#further-material)
 
 ## Introduction
 

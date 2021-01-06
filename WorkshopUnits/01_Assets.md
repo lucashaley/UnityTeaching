@@ -1,4 +1,15 @@
-# Unit 01: Assets
+# Unit 01: Assets <!-- omit in toc -->
+
+- [Introduction](#introduction)
+- [Goal](#goal)
+- [Process](#process)
+  - [Creating simple geometry](#creating-simple-geometry)
+    - [Manipulating the Cube](#manipulating-the-cube)
+      - [Using the Manipulator Gizmo](#using-the-manipulator-gizmo)
+      - [Using the Inspector Panel](#using-the-inspector-panel)
+  - [Creating lights](#creating-lights)
+- [Wrap-Up](#wrap-up)
+- [Further Material](#further-material)
 
 ## Introduction
 
