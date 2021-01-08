@@ -90,10 +90,50 @@ Now that we've made the cube, let's manipuate it. We can do this in two ways -- 
 
 ##### Using the Inspector Panel
 
+Usng the manipulator gizmos is intuitive and immmediate, but often does not have the precision needed in game development. A more precise method to manipulate objects is by using the Inspector panel.
+
+The contents of the inspector panel is contextual, and changes with whatever you have selected. But in general, the inspector displays **Components**. A component is a chunk of functionality, usually related to one element of the object. The **Transform** component has all the information related to the position, rotation, and scale of an object.
+
+![Transform Component](images/01_TransformComponent.png)
+
+But there are other components as well – our cube has a **Cube (Mesh Filter)**, a **Mesh Renderer**, and a **Box Collider**.
+
+> It's key to conceptualise each of these Inspector sections as a separate Component. This will become more important once we start coding.
+
+1. For now, we can adjust the Transform properties of our cube. Firstly, let's reset the cube back to zero by clicking the three dots at the top right of the Transform component, called the Component Menu.
+
+![Component Menu](images/01_ComponentMenu.png)
+
+And choose **Reset**.
+
+> If your cube disappears, it's probably just out of the Scene window frame. Double-click on the Cube in the Heirarchy to focus on it again.
+
+2. Now we can edit the values, and move/rotate/scale the Cube as needed.
+
+> You can also put your mouse cursor over one of the value titles, and click-drag to change the values.
+
 ### Creating lights
 
-Lights are made in the same way, but have different properties:
+Lights are made in the same way, but have a different **Light** component:
+
+![Light Component](images/01_LightComponent.png)
+
+The **Type** dropdown is the most important setting here, as it will change the type of light created.
+
+> Unity is not great with lights, and cannot have too many lights in a given scene.
 
 ## Wrap-Up
+
+Unity has the ability to create many different types of assets within the engine itself. For this project, we will mainly be concerned with:
+
+- Cube
+- Sphere
+- Cylinder
+- Capsule
+- Plane
+- Light
+- AudioSource
+
+And over the following weeks we'll be looking how each are made and manipulated.
 
 ## Further Material
