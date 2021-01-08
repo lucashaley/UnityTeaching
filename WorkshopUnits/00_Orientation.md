@@ -7,7 +7,7 @@
   - [The User Interface](#the-user-interface)
     - [UI panels](#ui-panels)
   - [Moving around the scene](#moving-around-the-scene)
-- [Focusing](#focusing)
+    - [Focusing](#focusing)
 - [Wrap-Up](#wrap-up)
 - [Further Material](#further-material)
 
@@ -15,7 +15,7 @@
 
 For this course, we'll be taking a dive into Unity as a game development platform. We'll be making a top-down shooter game over the next 12 weeks.
 
-> This first unit will be light on information, as the majority of content is better presented in-person in the workshop. This document will help as a reminder.
+> These first units will be light on information, as the majority of content is better presented in-person in the workshop. These documents will help as a reminder.
 
 ## Goal
 
@@ -77,7 +77,7 @@ You can also activate this same functionality by holding down the **Alt/Option**
 
 If you're familiar with wasd-style games, you can also get around that way. Hold down the **right mouse button**, and use **WASD** to move around and the mouse to rotate. **Q** and **E** move you down and up. Holding **Shift** speeds up the camera.
 
-## Focusing
+#### Focusing
 
 You can focus on an object by either double-clicking it in the Hierarchy, or by selecting it in the Scene and hitting the **F** key. This also makes the scene rotate around that object.
 
