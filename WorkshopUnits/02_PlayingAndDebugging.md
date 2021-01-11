@@ -108,7 +108,11 @@ To start with, we'll make a mistake!
         This won't work.
     }
 ```
-5. Switch back to Unity. You'll find that you can't play, and you'll get the following errors in your Console panel:
+5. Switch back to Unity. We'll now need to add the script to the game, by dragging it from the Project panel onto the FirstCube object in the Heirarchy panel:
+
+![Add script to cube](images/02_AddScriptToCube.png)
+
+6. Try pressing the play button –– you'll find that you can't play, and you'll get the following errors in your Console panel:
 
 ![Errors!](images/02_WordErrors.png)
 
