@@ -73,7 +73,7 @@ Now we'll take a look at how we can use testing to track our scripts and discove
 
 ![Script Editor](images/02_ScriptEditor.png)
 
-By default, every new Unity script starts with this boilderplate code:
+By default, every new Unity script starts with this boilerplate code:
 
 ```C#
 using System.Collections;
@@ -118,7 +118,7 @@ To start with, we'll make a mistake!
 
 You'll be getting these **a lot**, so let's understand them.
 
-- The first part of the line, `Assets/LucasHaley/Scripts/DebugTest.cs`, tells you which script has the problem.
+- After the timestamp, the first part of the line, `Assets/LucasHaley/Scripts/DebugTest.cs`, tells you which script has the problem.
 - The second part, `(10,25)`, tells you which **line** and **character** has the problem. This isn't always exactly correct all the time, but usually it's a good indicator around where things do wrong. As you know, our problem is on line 10.
 - The last part, `error CS1002: ; expected` gives you an idea of what the issue might be. In this case, it's looking for a semicolon at the end of every script command. The semicolon is called the **terminator**, and you'll need it at the end of every line.
 
