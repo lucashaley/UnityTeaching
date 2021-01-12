@@ -6,6 +6,7 @@
   - [Create a new scene](#create-a-new-scene)
   - [Create a floor](#create-a-floor)
   - [Create the player](#create-the-player)
+  - [Set the camera](#set-the-camera)
   - [Get player input](#get-player-input)
 - [Wrap-Up](#wrap-up)
 - [Further Material](#further-material)
@@ -73,6 +74,35 @@ Before we get to coding, let's make a player object.
 and a Heirarchy panel that looks like:
 
 ![Player Heirarchy](images/03_PlayerHeirarchy.png)
+
+### Set the camera
+
+When you start the playmode, your game will look like this:
+
+![Camera before](images/03_CameraBefore.png)
+
+And that's no top-down shooter. Let's set the camera.
+
+1. Select the `Main Camera` from the Hierarchy.
+2. Change the Transform values to:
+
+![Camera transform](images/03_CameraTransform.png)
+
+3. The Game panel should look something like this:
+
+![Camera perspective](images/03_CameraPerspective.png)
+
+It might not be obvious from this, but we're currently using a *perspective* camera, which means parallel lines converge as they recede. For this game, we'll be using an *orthographic* camera, which makes parallel lines stay parallel.
+
+> Feel free to change this, and any camera values, as you develop your game.
+
+In the **Camera** component of the `Main Camera` object, change the **perspective** value to **orthographic**.
+
+![Camera orthographic](images/03_CameraOrthographic.png)
+
+The Game panel should now look like:
+
+![Camera after](images/03_CameraAfter.png)
 
 ### Get player input
 
