@@ -202,6 +202,38 @@ public class PlayerInput : MonoBehaviour
 ```
 And it should disappear from the editor.
 
+> ### Challenge
+> We'll need to get the vertical input (the **W** and **S** keys), so have a crack at adding that code. Hint: you'll need to add two lines of code.
+<details>
+<summary>Challenge solution</summary>
+
+```C#
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerInput : MonoBehaviour
+{
+    private float horizontalInput;
+    private float verticalInput;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        // Debug.Log(Input.GetAxis("Horizontal"));
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
+    }
+}
+```
+</details>
+
 ## Wrap-Up
 
 ## Further Material
