@@ -8,6 +8,7 @@
   - [Create the player](#create-the-player)
   - [Set the camera](#set-the-camera)
   - [Get player input](#get-player-input)
+  - [Challenge](#challenge)
 - [Wrap-Up](#wrap-up)
 - [Further Material](#further-material)
 
@@ -202,8 +203,8 @@ public class PlayerInput : MonoBehaviour
 ```
 And it should disappear from the editor.
 
-> ### Challenge
-> We'll need to get the vertical input (the **W** and **S** keys), so have a crack at adding that code. Hint: you'll need to add two lines of code.
+### Challenge
+We'll need to get the vertical input (the **W** and **S** keys), so have a crack at adding that code. Hint: you'll need to add two lines of code.
 <details>
 <summary>Challenge solution</summary>
 
