@@ -109,7 +109,7 @@ void FireBullet()
 
 - Save the script and head back to Unity.
 - Select Player01.
-- Drag the ProjectileOrigin GameObject from the **Heirarchy** into the empty Bullet Origin field in the Inspector.
+- Drag the ProjectileOrigin GameObject from the **Hierarchy** into the empty Bullet Origin field in the Inspector.
 - Drag the PlayerBullet prefab from the **Project** tab into the empty Bullet field.
 
 > Note: **DO NOT** drag PlayerBullet from the Hierarchy - we deleted this instance of the bullet on the previous page. This needs to be the version that’s in the Prefabs folder.

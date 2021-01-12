@@ -36,7 +36,7 @@ uses namespaces).
 
 -	Select the **TriggerSphere** and make sure the **This Soldier** reference is connected.
 
-  The This Soldier reference refers to the parenting Soldier object in the Heirarchy.
+  The This Soldier reference refers to the parenting Soldier object in the Hierarchy.
 
 
 ![Rectangle_70715.png](images/Rectangle_70715.png)  

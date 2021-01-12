@@ -29,7 +29,7 @@ As we saw in [Unit 00](00_Orientation.md), Unity has a **Playmode** toggle at th
 
 ![Playmode On](images/02_PlaymodeOn.png)
 
-2. Select the `FirstCube` from the Heirarchy panel. Note that the inspector panel changes to show the Cube properties.
+2. Select the `FirstCube` from the Hierarchy panel. Note that the inspector panel changes to show the Cube properties.
 3. Change the Position values to zero, and note how the cube centers on the Game panel screen.
 4. Click on the Position's X label, and drag left and right. Note how the cube moves left and right. Make sure to check how your position values change in the Inspector.
 
@@ -108,7 +108,7 @@ To start with, we'll make a mistake!
         This won't work.
     }
 ```
-5. Switch back to Unity. We'll now need to add the script to the game, by dragging it from the Project panel onto the FirstCube object in the Heirarchy panel:
+5. Switch back to Unity. We'll now need to add the script to the game, by dragging it from the Project panel onto the FirstCube object in the Hierarchy panel:
 
 ![Add script to cube](images/02_AddScriptToCube.png)
 

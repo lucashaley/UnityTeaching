@@ -117,7 +117,7 @@ For an berserk landmine party, comment out  timer = 0;  in the _Fire2_ input (in
 
 The standard Assets explosion is all bite, no bark—it doesn’t make any sound by default.
 
-Also, after an explosion particle effect has played through, it still lingers as a redundant object in your Heirarchy, forever occupying memory.
+Also, after an explosion particle effect has played through, it still lingers as a redundant object in your Hierarchy, forever occupying memory.
 
 We’ll make some improvements to this for use now and in the future.
 

@@ -106,7 +106,7 @@ But there are other components as well – our cube has a **Cube (Mesh Filter)**
 
 And choose **Reset**.
 
-> If your cube disappears, it's probably just out of the Scene window frame. Double-click on the Cube in the Heirarchy to focus on it again.
+> If your cube disappears, it's probably just out of the Scene window frame. Double-click on the Cube in the Hierarchy to focus on it again.
 
 2. Now we can edit the values, and move/rotate/scale the Cube as needed.
 

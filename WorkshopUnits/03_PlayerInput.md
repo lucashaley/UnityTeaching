@@ -38,7 +38,7 @@ Let's start with a blank slate for this project.
 
 We'll create a temporary floor for our player to play on.
 
-1. Right-click in the Heirarchy panel, and select **3D Object > Plane**.
+1. Right-click in the Hierarchy panel, and select **3D Object > Plane**.
 2. Just to be sure, let's set this GameObject's position to zero. Click on the component menu on the Transform component, and select **Reset**.
 
 ![Reset position](images/03_ResetPlane.png)
@@ -47,7 +47,7 @@ We'll create a temporary floor for our player to play on.
 
 Before we get to coding, let's make a player object.
 
-1. In the Heirarchy panel, right-click and select **Create Empty**. Rename this object to `Player`.
+1. In the Hierarchy panel, right-click and select **Create Empty**. Rename this object to `Player`.
 
 ![Create Empty](images/03_CreateEmpty.png)
 
@@ -71,9 +71,9 @@ Before we get to coding, let's make a player object.
 
 ![Player](images/03_Player.png)
 
-and a Heirarchy panel that looks like:
+and a Hierarchy panel that looks like:
 
-![Player Heirarchy](images/03_PlayerHeirarchy.png)
+![Player Hierarchy](images/03_PlayerHierarchy.png)
 
 ### Set the camera
 
@@ -112,7 +112,7 @@ The next step is to get the input from the player. We'll start with grabbing key
 
 ![Player input script](images/03_PlayerInput.png)
 
-2. Drag the new script onto the `Player` GameObject in the Heirarchy panel.
+2. Drag the new script onto the `Player` GameObject in the Hierarchy panel.
 
 ![Player with script](images/03_PlayerWithScript.png)
 

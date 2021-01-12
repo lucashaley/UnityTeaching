@@ -47,7 +47,7 @@ From the selection of templates, choose the "Massey" template, and let Unity ope
 
     These are all of the assets available in your project.
 
-3. Heirarchy
+3. Hierarchy
 
     These are the assets/GameObjects that are currently in your scene.
 
