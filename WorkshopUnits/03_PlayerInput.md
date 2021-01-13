@@ -7,14 +7,17 @@
   - [Create a floor](#create-a-floor)
   - [Create the player](#create-the-player)
   - [Set the camera](#set-the-camera)
-  - [Get player input](#get-player-input)
-  - [Challenge](#challenge)
+  - [Get player input, part 1](#get-player-input-part-1)
+  - [Challenge 1](#challenge-1)
+  - [Moving the player, part 1](#moving-the-player-part-1)
+  - [Get player input, part 2](#get-player-input-part-2)
+  - [Moving the player, part 2](#moving-the-player-part-2)
 - [Wrap-Up](#wrap-up)
 - [Further Material](#further-material)
 
 ## Introduction
 
-Alright! This unit we're going to start *actually making the game*. Exciting!
+Alright! This unit we're going to start *actually making the game*. Exciting! This is going to be a major chunk of work.
 
 ## Goal
 
@@ -105,7 +108,7 @@ The Game panel should now look like:
 
 ![Camera after](images/03_CameraAfter.png)
 
-### Get player input
+### Get player input, part 1
 
 The next step is to get the input from the player. We'll start with grabbing keyboard input, using the standard WASD keys for player movement.
 
@@ -203,10 +206,10 @@ public class PlayerInput : MonoBehaviour
 ```
 And it should disappear from the editor.
 
-### Challenge
+### Challenge 1
 We'll need to get the vertical input (the **W** and **S** keys), so have a crack at adding that code. Hint: you'll need to add two lines of code.
 <details>
-<summary>Challenge solution</summary>
+<summary>Challenge 1 solution</summary>
 
 ```C#
 using System.Collections;
@@ -235,9 +238,94 @@ public class PlayerInput : MonoBehaviour
 ```
 </details>
 
+### Moving the player, part 1
+
+We now have variables storing the player keyboard input each frame. We can use this data to move the player.
+
+> We'll be looking at many different ways of moving things, but to start with we're going to use a simple `Transform` call.
+
+1. Open the `PlayerInput` script.
+2. After we collect the player input, we can apply it to the **transform** component –– which, if you remember, is where the position data is stored. 
+> Looking at the Unity documentation, we can see that the `Translate` method takes three inputs (and an optional fourth):
+> 
+> `public void Translate(float x, float y, float z, Transform relativeTo);`
+>
+> In this case, we'll only need the x and z. The y value would make the player move towards and away from the camera, which we do not want.
+
+Add the following line:
+
+```C#
+    // Update is called once per frame
+    void Update()
+    {
+        // Debug.Log(Input.GetAxis("Horizontal"));
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
+
+        transform.Translate(horizontalInput, 0f, verticalInput);
+    }
+```
+
+And head back to Unity to see if it works.
+
+3. Alright, we have movement! It's a little quick, and out of control. There are two things we need to do to control this movement better. The first is to decouple this speed from the speed of the computer.
+
+> Remember that `Update` gets run every frame. So, the faster your computer, the more FPS you have. Which means more `Update`s in the same amount of time. So, the faster your hardware, the faster your player. That's not right.
+>
+> We can fix this by using the Unity property `Time.deltaTime`, which is the time elapsed since the last redraw.
+
+In your code, change the following lines:
+
+```C#
+    // Update is called once per frame
+    void Update()
+    {
+        // Debug.Log(Input.GetAxis("Horizontal"));
+        horizontalInput = Input.GetAxis("Horizontal") * Time.deltaTime;
+        verticalInput = Input.GetAxis("Vertical") * Time.deltaTime;
+
+        transform.Translate(horizontalInput, 0f, verticalInput);
+    }
+```
+
+4. The player is now a lot slower, but it's consistent across devices. Now let's control its speed using a variable. Add the following line to our variables:
+
+```C#
+public class PlayerInput : MonoBehaviour
+{
+    private float horizontalInput;
+    private float verticalInput;
+    public float translateSpeed = 10f;
+```
+> The `= 10f` allows us to assign a default value, and is optional.
+
+As this is a `public` variable, when you get back to Unity, you should have a new property –– which the game designer can edit in-editor.
+
+![Translate speed](images/03_TranslateSpeed.png)
+
+5. Now let's hook it up to the player:
+
+```C#
+    // Update is called once per frame
+    void Update()
+    {
+        // Debug.Log(Input.GetAxis("Horizontal"));
+        horizontalInput = Input.GetAxis("Horizontal") * Time.deltaTime * translateSpeed;
+        verticalInput = Input.GetAxis("Vertical") * Time.deltaTime * translateSpeed;
+
+        transform.Translate(horizontalInput, 0f, verticalInput);
+    }
+```
+Head back to Unity, and have a go. Note that you can edit the speed directly in the editor, while the game is playing, and the speed updates immediately.
+
+### Get player input, part 2
+
+### Moving the player, part 2
+
 ## Wrap-Up
 
 ## Further Material
 
 - Unity Manual on Input
 - [Input.GetAxis reference](https://docs.unity3d.com/ScriptReference/Input.GetAxis.html)
+- [Time.deltaTime reference](https://docs.unity3d.com/ScriptReference/Time-deltaTime.html)
