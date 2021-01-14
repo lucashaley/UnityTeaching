@@ -7,6 +7,7 @@
   - [Editing during play](#editing-during-play)
   - [Debugging using the console](#debugging-using-the-console)
 - [Wrap-Up](#wrap-up)
+  - [Take Home 2.1: Debug.Log](#take-home-21-debuglog)
 - [Further Material](#further-material)
 
 ## Introduction
@@ -165,6 +166,9 @@ You can click on the **Collapse** button to toggle if your console shows each ti
 ## Wrap-Up
 
 In this unit we took a look at how Unity handles playing out game, and how we can start to debug our code for errors. We'll be looking a lot more into coding and debugging throughout the course.
+
+### Take Home 2.1: Debug.Log
+If you're ever having issues with your code, you can use `Debug.Log` to show what's going on under the hood.
 
 ## Further Material
 
