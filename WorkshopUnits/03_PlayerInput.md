@@ -13,6 +13,9 @@
   - [Get player input, part 2](#get-player-input-part-2)
   - [Moving the player, part 2](#moving-the-player-part-2)
 - [Wrap-Up](#wrap-up)
+  - [Take Home 3.1: GetAxis](#take-home-31-getaxis)
+  - [Take Home 3.2: Screen vs World Space](#take-home-32-screen-vs-world-space)
+  - [Take Home 3.3: Expose Choices](#take-home-33-expose-choices)
 - [Further Material](#further-material)
 
 ## Introduction
@@ -320,12 +323,180 @@ Head back to Unity, and have a go. Note that you can edit the speed directly in 
 
 ### Get player input, part 2
 
+We've got the player moving using the keyboard. Now we're going to rotate the player using the mouse.
+
+Unlike the player GameObject, the mouse cursor exists in a different context -- it exists in the flat 2-dimensional plane of the screen. So, unlike the game world, that has three (XYZ) coordinates, the mouse only has two -- XY. The space that the cursor lives in is called **Screen Space**, as opposed to **World Space** where the GameObjects live. We need to get the Screen space coordinates, and turn them into World space coordinates.
+
+> This is one way of getting input from mouse position –– there are others. This method is not the strongest, but it will work fine for now. We'll take a look at **Raycasting** later.
+
+1. Just like we did for keyboard input, the first thing we'll do is make sure we are getting input from the mouse. Add the following line to your code:
+
+```C#
+    // Update is called once per frame
+    void Update()
+    {
+        // Debug.Log(Input.GetAxis("Horizontal"));
+        horizontalInput = Input.GetAxis("Horizontal") * Time.deltaTime * translateSpeed;
+        verticalInput = Input.GetAxis("Vertical") * Time.deltaTime * translateSpeed;
+
+        transform.Translate(horizontalInput, 0f, verticalInput);
+
+        Debug.Log(Input.mousePosition);
+    }
+```
+
+And back in Unity, you should be getting mouse coordinates in screen space:
+
+![Mouse position](images/03_MousePosition.png)
+
+> Note how the coordinates are only in the XY axes, not Z. We're just getting the flat screen coordinates.
+
+2. The next step is to convert those screen space coordinates into world space coordinates. The **Camera** component has a method to do just that –– but first, we need to tell Unity *which* camera we're using.
+
+> You can have multiple cameras going at the same time in Unity. This can be useful for things like in-game closed-circuit cameras, or cool rendering tricks.
+
+Click on the `Main Camera` object in the Hierarchy panel. If you check out the Inspector panel, in the GameObject section you can see it has the **MainCamera** tag:
+
+![Main camera](images/03_MainCamera.png)
+
+We can use this tag to get our camera. Comment out our previous line, and add this line to your code:
+
+```C#
+    // Update is called once per frame
+    void Update()
+    {
+        // Debug.Log(Input.GetAxis("Horizontal"));
+        horizontalInput = Input.GetAxis("Horizontal") * Time.deltaTime * translateSpeed;
+        verticalInput = Input.GetAxis("Vertical") * Time.deltaTime * translateSpeed;
+
+        transform.Translate(horizontalInput, 0f, verticalInput);
+
+        // Debug.Log(Input.mousePosition);
+        Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+```
+Back in Unity, you should be getting world coordinates now:
+
+![World coordinates](images/03_MouseWorldCoords.png)
+
+3. In the same way as we used `transform.Translate` for keyboard movement, we can use `transform.LookAt` to point our player at the mouse cursor. But first, let's save out the mouse position as a variable:
+
+```C#
+        // Debug.Log(Input.mousePosition);
+        Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+```
+
+Then we can point away using the variable:
+
+```C#
+        // Debug.Log(Input.mousePosition);
+        Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        transform.LookAt(mousePosition);
+```
+
+And try it in Unity.
+
+> **UH OH**! We have a problem. The player is pointing upwards! In your console, you should see our Y value is consistently `40.0`. If you remember, this is the Y value we used for the Camera itself. So the method is working correctly -- it's making the player point at the mouse, which is floating 40 units above the ground!
+
+4. Let's fix that. We're just going to do a hard fix and replace the Y value with zero. And we can also comment out the Debug line, we don't need it any more.
+
+```C#
+    // Update is called once per frame
+    void Update()
+    {
+        // Debug.Log(Input.GetAxis("Horizontal"));
+        horizontalInput = Input.GetAxis("Horizontal") * Time.deltaTime * translateSpeed;
+        verticalInput = Input.GetAxis("Vertical") * Time.deltaTime * translateSpeed;
+
+        transform.Translate(horizontalInput, 0f, verticalInput);
+
+        // Debug.Log(Input.mousePosition);
+        // Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.y = 0f;
+        transform.LookAt(mousePosition);
+    }
+```
+
 ### Moving the player, part 2
 
+Now that we have translation and rotation for the player, have go moving around. Does it feel right? Pay special attention to how the player moves when you've rotated. When the player is pointing down, pressing the up key makes it move further down. This motion is called **relative** motion, and we get it because in our move code we use the default settings for `transform.Translate`. To quote the Unity reference: "If `relativeTo` is left out or set to `Space.Self` the movement is applied relative to the transform's local axes."
+
+The alternative motion is **aboslute** motion, in which the up key always moves the player upwards, no matter its rotation.
+
+If you want the up key to always move the player up, we'll need to change the  `transform.Translate` method. But we can do something a bit better -- we can make the choice for relative or absolute motion available in the editor, for the game designer to choose.
+
+1. First, we'll make a checkbox toggle in the editor. In your code, add the following line:
+
+```C#
+public class PlayerInput : MonoBehaviour
+{
+    private float horizontalInput;
+    private float verticalInput;
+    public float translateSpeed = 10f;
+    public bool useAbsoluteMotion;
+
+    // Start is called before the first frame update
+```
+
+And note how back in Unity, we now have a checkbox:
+
+![Use absolute motion](images/03_UseAbsolute.png)
+
+2. Now we can use that boolean value, and an `if` statement, to switch between the two types of motion. First, let's set up the `if` statement:
+
+```C#
+    // Update is called once per frame
+    void Update()
+    {
+        // Debug.Log(Input.GetAxis("Horizontal"));
+        horizontalInput = Input.GetAxis("Horizontal") * Time.deltaTime * translateSpeed;
+        verticalInput = Input.GetAxis("Vertical") * Time.deltaTime * translateSpeed;
+
+        // check if we use absolute or relative motion
+        if (useAbsoluteMotion)
+        {
+            // use absolute
+        } else {
+            // use relative
+            transform.Translate(horizontalInput, 0f, verticalInput);
+        }
+```
+When you play the game now, it still works normally. But if you check the checkbox, the player stops moving –– that part of the `if` statement is still empty.
+
+3. The Unity documentation says we can also use `Space.World`. Let's do that! Add the following line:
+
+```C#
+        // check if we use absolute or relative motion
+        if (useAbsoluteMotion)
+        {
+            // use absolute
+            transform.Translate(horizontalInput, 0f, verticalInput, Space.World);
+        } else {
+            // use relative
+            transform.Translate(horizontalInput, 0f, verticalInput);
+        }
+```
+
+Try your game with both types of movement, and decide which one you want to use for this project.
+
 ## Wrap-Up
+
+We've started building the game proper now, ending up with the start of a player that moves when responding to player input.
+
+### Take Home 3.1: GetAxis
+To respond to keystrokes, use `Input.GetAxis`. You can also use `Input.GetKey`, but that hardcodes your keystroke.
+
+### Take Home 3.2: Screen vs World Space
+To respond mouse movement, you need to convert from `Space.Screen` to `Screen.World` before using its position data. You can also use `Raycast` as we will see later.
+
+### Take Home 3.3: Expose Choices
+Consider exposing design choices to the editor, so the game designer can choose which gameplay options they want.
 
 ## Further Material
 
 - Unity Manual on Input
 - [Input.GetAxis reference](https://docs.unity3d.com/ScriptReference/Input.GetAxis.html)
 - [Time.deltaTime reference](https://docs.unity3d.com/ScriptReference/Time-deltaTime.html)
+- [Transform.Translate reference](https://docs.unity3d.com/ScriptReference/Transform.Translate.html)
