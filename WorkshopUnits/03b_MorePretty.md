@@ -48,3 +48,4 @@ Click on the **Albedo** colour swatch, and change the colour as you like. You ca
 Creating basic materials is super easy. Later, we'll be looking at applying textures to materials, and creating our own shaders.
 
 ## Further Material
+- [Unity Manual: Materials](introduction.html)
