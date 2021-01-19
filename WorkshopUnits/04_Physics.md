@@ -7,6 +7,7 @@
   - [Making Physics](#making-physics)
     - [Colliders](#colliders)
     - [Rigidbodies](#rigidbodies)
+  - [Player Physics](#player-physics)
 - [Wrap-Up](#wrap-up)
 - [Further Material](#further-material)
 
@@ -98,6 +99,104 @@ Either way, add a Rigidbody component to Player.
 ![Player with Rigidbody](images/04_Player.png)
 
 Try playing the game -- and notice how you can't pass through the wall anymore!
+
+![Player hitting wall](images/04_WallPlayerCollision.png)
+
+> The player now also reacts to gravity -- if we didn't have the ground plane to stop it, the player would immediately start to fall at the standard 9.8m/s². You can see this by unchecking the box next to the name of the plane, to temporarily disable it from the game:
+>
+> ![Disable Plane](images/04_DisablePlane.png)
+>
+> When you play the game now, the player will start to fall. Because we're using an Orthographic camera, it won't be obvious -- but check out how the Player's Y position falls increasing quickly.
+
+### Player Physics
+
+We've now got the player engaging with the physics engine. But we can go a step further, and make the player move using physics.
+
+Instead of moving the player using `Translate`, we're going to add physical **forces** to the character. This is the equivalent to *pushing* the player, instead of picking it up and placing it somewhere else.
+
+This force/push is generated through the Rigidbody, using the `AddForce()` method.
+
+Because we're pushing it, the player will also start to need a **mass** (weight) and will need to interact with surfaces and **friction**. We'll see how these settings work alongside the physics system.
+
+We're going to add an alternative method for moving the player, and set up a toggle for the game designer, like what we made for relative/absolute motion.
+
+1. In your `PlayerInput` script, we'll add a new boolean toggle:
+
+```C#
+public class PlayerInput : MonoBehaviour
+{
+    private float horizontalInput;
+    private float verticalInput;
+    public float translateSpeed = 10f;
+    public bool useAbsoluteMotion;
+
+    public bool usePhysicalMotion;
+```
+
+And double-check in the editor that it's working:
+
+![Use physical motion](images/04_UsePhysicalMotion.png)
+
+2. Next, we need to include the `AddForce` method. we can scaffold this using a similar `if` structure as before.
+
+> At this point, we're going to be adding code that we'll later be **refactoring**. Refactoring is a critical part of coding –– but for now, just think how what we're coding now might be problematic.
+
+```C#
+    // Update is called once per frame
+    void Update()
+    {
+        // Debug.Log(Input.GetAxis("Horizontal"));
+        horizontalInput = Input.GetAxis("Horizontal") * Time.deltaTime * translateSpeed;
+        verticalInput = Input.GetAxis("Vertical") * Time.deltaTime * translateSpeed;
+
+        // check if we use absolute or relative motion
+        if (useAbsoluteMotion)
+        {
+            // use absolute
+            if (usePhysicalMotion)
+            {
+                // use forces
+                GetComponent<Rigidbody>().AddForce(horizontalInput, 0f, verticalInput);
+            } else {
+                // use translate, no forces
+                transform.Translate(horizontalInput, 0f, verticalInput, Space.World);
+            }
+        } else {
+            // use relative
+            transform.Translate(horizontalInput, 0f, verticalInput);
+        }
+```
+
+Give the game a go. What do you notice? The player doesn't move much, huh. But it *is* moving. Check out the Transform values.
+
+        verticalInput = Input.GetAxis("Vertical") * Time.deltaTime * translateSpeed;
+        verticalInput = Input.GetAxis("Vertical") * Time.deltaTime * translateSpeed;
+Making this movement more useful is a little more complicated. In the Translate version, we were able to have a `translateSpeed` variable that would multiply the speed. We can do a similar thing with the physical version –– except we also have a **mass** to work with.
+
+> Think about how this might work: one person might be able to push a box full of Lego pieces quite easily. That same person (i.e. with the same force) might not be able to push the same size box full of rocks (i.e. with a much greater mass).
+
+Let's see how this plays out.
+
+3. Create a new class variable:
+
+```C#
+public class PlayerInput : MonoBehaviour
+{
+    private float horizontalInput;
+    private float verticalInput;
+    public float translateSpeed = 10f;
+    public bool useAbsoluteMotion;
+
+    public bool usePhysicalMotion;
+    public float physicalSpeed = 60f;
+```
+
+4. And multiply our force by that variable:
+
+```C#
+// use forces
+GetComponent<Rigidbody>().AddForce(horizontalInput * physicalSpeed, 0f, verticalInput * physicalSpeed);
+```
 
 ## Wrap-Up
 
