@@ -82,6 +82,10 @@ and a Hierarchy panel that looks like:
 
 ![Player Hierarchy](images/03_PlayerHierarchy.png)
 
+7. Lastly, let's mark this gameObject as being the player. We do this by assigning the Player **Tag**:
+
+![Player Tag](images/03_PlayerTag.png)
+
 ### Set the camera
 
 When you start the playmode, your game will look like this:
