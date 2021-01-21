@@ -80,7 +80,7 @@ public class PlayerInput : MonoBehaviour
 
 ### Method Chaining
 
-A cool aspect of C# is the ability to **chain methods** -- the ability to add methods together into one call. You'll sometimes do this with `GetTransform`, where you want to just make one method call and not save the reference. In this case, you just add a dot and the method onto the end of the `GetComponent` call:
+A cool aspect of C# is the ability to **chain methods** -- the ability to add methods together into one call, one after the other. You'll sometimes do this with `GetTransform`, where you want to just make one method call and not save the reference. In this case, you just add a dot and the method onto the end of the `GetComponent` call:
 
 ```C#
 enemy.GetComponent<HealthScript>().DealDamage(16);
