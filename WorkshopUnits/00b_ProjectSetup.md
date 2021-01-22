@@ -37,6 +37,7 @@ Name this folder your name, without a space between given and surname. For examp
 - [ ] Gizmos
 - [ ] Materials
 - [ ] Models
+- [ ] PhysicMaterials
 - [ ] Prefabs
 - [ ] Resources
 - [ ] Scenes
