@@ -198,6 +198,49 @@ public class PlayerInput : MonoBehaviour
 GetComponent<Rigidbody>().AddForce(horizontalInput * physicalSpeed, 0f, verticalInput * physicalSpeed);
 ```
 
+Try out the game now. Feel free to change the `physicalSpeed` variable while playing the game. 
+
+> You may notice that when the player gets up to speed, it starts wiggling! This is because it's a physical simulation, and the cube is dragging against the floor. There are a couple of things we can do to stop this from happening: reduce that friction, and lock the player's movement.
+
+5. Each collider can have a special piece of data called a **Physic Material**, which defines how that collider will interact with other colliders –– how things rub against each other, and bounce off each other.
+
+> You can see the empty slot in any Rigidbody:
+>
+> ![Empty physic material](images/04_EmptyPhysicMaterial.png)
+
+We can create a new Physic Material, and make the ground plane all slippery.
+
+Navigate to the `PhysicMaterials` folder in your folder. Right-click in the Project panel, and select **Create > Physic Material**:
+
+![New physic material](images/04_NewPhysicMaterial.png)
+
+Name this new material `Ground`.
+
+6. Select the new physic material, and check out the properties in the Inspector panel.
+
+> Dynamic friction is friction when things are moving (i.e. to make things come to a stop), and static friction is for when things are still (i.e. to make things start to move).
+
+Set your `Ground` material to these settings:
+
+![Ground settings](images/04_GroundSettings.png)
+
+And check out how the player moves. Much nicer!
+
+7. Next, we're going to lock of some axes of movement so our player doesn't accidentally get out of whack.
+
+    Select the Player, and check out the Rigidbody properties. Near the bottom of the component are the **Constraints** (you may have to click the disclosure triangle). Checking these boxes will make Unity try to lock down translation and rotation.
+
+    For our player, we want to lock any Y translation (no moving upwards), and lock any rotation on the X and Z axes:
+
+![Player constraints](images/04_Constraints.png)
+
+Looks good!
+
 ## Wrap-Up
 
+Another significant unit, this time starting to engage with the Unity Physics engine.
+
+Physics are tricky to get the "feel" right, as there are a lot of bits that interact together. You have to balance mass, drag, physic friction, impulses, and forces.
+
 ## Further Material
+- [Physic Materials at Unity reference](https://docs.unity3d.com/Manual/class-PhysicMaterial.html)
