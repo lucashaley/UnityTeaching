@@ -46,24 +46,59 @@ public class PlayerBullet : MonoBehaviour
     public int damage = 4;
 ```
 
-6. Next, we're going to add our `OnCollisionEnter` method to our `Health`, just like what we did for the GettingShot unit. This one will be slightly different; this time we're going to try to get the bullet script, and pull the damage from the bullet.
+6. Next, we need to add our `OnCollisionEnter` method. But unlike what we did for the GettingShot unit, we're going to add it to the **Bullet**. That way, the bullet can collide with anything it comes into contact with.
 
-> This demonstrates encapsulation -- we're asking the bullet how much damage to take.
+> This demonstrates encapsulation -- the bullet handles when it hits something.
+
+So, back in the `PlayerBullet` script, add:
 
 ```C#
-    void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.TryGetComponent(out PlayerBullet bullet))
+        if (other.gameObject.TryGetComponent(out Health health))
         {
-            Damage(bullet.damage);
-            Destroy(bullet.gameObject);
+            health.Damage(damage);
+            Destroy(gameObject);
         }
     }
 ```
 
-> Now, when you test this, you should get the debug message. Try playing around with the damage variable, and you'll see the wall receives the new value.
+> When you test this, it probably won't work! You might see the bullet for a fraction of a second, and then it disappears. This is because the bullet is colliding with the *player*! In order to fix this, we need to set up some **layers**.
 
-7. We're now going to work on our `Damage` method. This method will decrease the value of our `health` variable –– but we also need to keep track of when we get down to 0, as we don't want to slip into negative numbers. Add the following code:
+7. With the `Player` selected, click on the **Layer** drop-down menu in the Inspector.
+
+![Layer Menu](images/05f_LayerMenu.png)
+
+Select `Add Layer…`.
+8. In the **Layers** inspector, add the following layers:
+
+![Add layers](images/05f_Layers.png)
+
+9. Click back on the Player, and set its layer to `Player`.
+
+![Set to Player layer](images/05f_SetToPlayer.png)
+
+> If it asks you if you want to change all children -- you do.
+
+10. In your Prefab directory, select the `PlayerBullet` and set its layer to `PlayerBullet`.
+
+![Player bullet](images/05f_PlayerBullet.png)
+
+11. Now we're going to see how all this works together. Under the **Edit** menu, select **Project Settings**:
+
+![Project Settings menu](images/05f_ProjectSettingsMenu.png)
+
+12. This will bring up the **Project Settings** panel. Select **Physics** on the left of this panel, and scroll to the bottom of the panel. You'll see the **Layer Collision Matrix**.
+
+![Layer Collision Matrix](images/05f_LayerCollisionMatrix.png)
+
+> This matrix has one checkbox for every combination of layer interactions. If the checkbox is checked, everything in the corresponding two layers will collide. If it's unchecked, they will not.
+
+13. *Uncheck* the checkbox that connects `Player` and `PlayerBullet`. This will turn off collisions between those two layers.
+
+> When you test the game, the player bullet should no longer collide with the player.
+
+14. We're now going to work on our `Damage` method. This method will decrease the value of our `health` variable –– but we also need to keep track of when we get down to 0, as we don't want to slip into negative numbers. Add the following code:
 
 ```C#
     public void Damage(int damage)
@@ -132,7 +167,7 @@ public class WallDeath : Death
         health -= damage;
         if (health <= 0)
         {
-            Debug.Log("I'm DEAD");
+            // Debug.Log("I'm DEAD");
             if (gameObject.TryGetComponent(out Death death))
             {
                 death.HandleDeath();
