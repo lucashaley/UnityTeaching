@@ -1,4 +1,4 @@
-# Unit 06: User Interface
+# Unit 06: States
 
 ## Introduction
 

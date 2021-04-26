@@ -1,4 +1,4 @@
-# Unit 08: Aurtonomous Behaviour
+# Unit 08: Audio
 
 ## Introduction
 

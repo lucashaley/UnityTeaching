@@ -1,4 +1,4 @@
-# Unit 07: Audio
+# Unit 12: Animation
 
 ## Introduction
 
