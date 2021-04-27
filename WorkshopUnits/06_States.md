@@ -330,7 +330,10 @@ public class Door : MonoBehaviour
     IEnumerator CloseDoorAfterDelay()
     {
         yield return new WaitForSeconds(closeDelay);
-        StartCoroutine("CloseDoor");
+        if (doorState == DoorState.Open)
+        {
+            StartCoroutine("CloseDoor");
+        }
     }
 ```
 
@@ -440,7 +443,10 @@ public class Door : MonoBehaviour
     IEnumerator CloseDoorAfterDelay()
     {
         yield return new WaitForSeconds(closeDelay);
-        StartCoroutine("CloseDoor");
+        if (doorState == DoorState.Open)
+        {
+            StartCoroutine("CloseDoor");
+        }
     }
 }
 ```
