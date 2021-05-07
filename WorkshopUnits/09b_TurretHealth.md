@@ -36,7 +36,7 @@ To add health and death to the turret.
 > The issue with our health script is that our PlayerBullet objects are technically hitting the Cylinder and Cube -- the gameObjects with the **Colliders**. Which is how it *should* work, as we don't want things to collide that do not have a Collider. The problem is that in our `PlayerBullet` code, we use this line to check for an attached `Health`:
 >
 > ```C#
-> if (other.gameObject.TryGetComponent(out Health health))
+>   if (other.gameObject.TryGetComponent(out Health health))
 > ```
 >
 > So when the bullet collides with the Cylinder, it checks if the *Cylinder* has a `Health` script -- which it doesn't! The Cylinder's *parent* does! So that `if` statement fails. Bummer.
