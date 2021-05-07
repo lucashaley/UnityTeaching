@@ -1,31 +1,30 @@
-# Unit 09: Autonomous Behaviour
+# Unit 09c: More Autonomous Behaviour
 
-- [Unit 09: Autonomous Behaviour](#unit-09-autonomous-behaviour)
+- [Unit 09c: More Autonomous Behaviour](#unit-09c-more-autonomous-behaviour)
   - [Introduction](#introduction)
   - [Goal](#goal)
   - [Process](#process)
-    - [Create a turret](#create-a-turret)
+    - [Create a tank](#create-a-tank)
     - [Scripting the turret, first pass](#scripting-the-turret-first-pass)
   - [Wrap-Up](#wrap-up)
   - [Further Material](#further-material)
 
 ## Introduction
 
-In this unit, we'll be making **enemies**. About time, too! These enemies will have *behaviour* associated with them, which will control what they do and how they act.
+We now have a rudimentary enemy turret. Next, we're going to look at making an enemy that moves around!
 
 ## Goal
 
-To create opponents in our game, adding challenge to the gameplay.
+To make an enemy that persues the player while shooting at it.
 
 ## Process
 
-### Create a turret
+### Create a tank
 
-> The first type of enemy we are going to make is a turret. It will stay in one location, and rotate to aim at the player. It will also shoot projectiles that will damage the player.
+> The next type of enemy we are going to make is a tank. It will persue the player around the level. It will also shoot projectiles that will damage the player.
 
-> These first steps are very much like when we created the door -- start looking for these patterns!
 
-1. In your Hierarchy, create a new empty GameObject and call it `Turret`. Add a Cylinder to it. Then add a Cube to the Cylinder (Turret contains Cylinder,Cylinder contains Cube).
+1. In your Hierarchy, create a new empty GameObject and call it `Tank`. Add a Cylinder to it. Then add a Cube to the Cylinder (Turret contains Cylinder,Cylinder contains Cube).
 2. Set the Transform of the Cube to be:
 
 |         |x   |y   |z   |
@@ -227,8 +226,6 @@ public class TurretAttack : MonoBehaviour
 ![TurretAttack](images/09_TurretAttack.png)
 
 > Test out the game -- the turret should turn to face the player, and start shooting!
-
-16. The last thing you should do is drag your `EnemyTurret` gameObject from your Hierarchy into your Prefabs directory in the Project panel, to make a new prefab. Then you can add more turrets around your level.
 
 > There are quite a lot of issues here, though. Plenty of opportunity to refactor. Some points to pay attention to:
 > - The `EnemyBullet` prefab is using the `PlayerBullet` script. Seems like we should either make a new script for the enemy, or rename the existing script. Looking ahead at the functionality we may want, we might want to have a separate script for enemy projectiles. But the core functionality is the same, so maybe we can turn the existing script into a parent script, and subclass all the variations.
