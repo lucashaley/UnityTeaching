@@ -5,7 +5,11 @@
   - [Goal](#goal)
   - [Process](#process)
     - [Create a tank](#create-a-tank)
-    - [Scripting the turret, first pass](#scripting-the-turret-first-pass)
+    - [Moving the tank, first pass](#moving-the-tank-first-pass)
+    - [Making the Tank shoot](#making-the-tank-shoot)
+    - [Moving the tank, second pass](#moving-the-tank-second-pass)
+      - [Setting up the scene](#setting-up-the-scene)
+      - [Creating the NavMesh](#creating-the-navmesh)
   - [Wrap-Up](#wrap-up)
   - [Further Material](#further-material)
 
@@ -24,216 +28,160 @@ To make an enemy that persues the player while shooting at it.
 > The next type of enemy we are going to make is a tank. It will persue the player around the level. It will also shoot projectiles that will damage the player.
 
 
-1. In your Hierarchy, create a new empty GameObject and call it `Tank`. Add a Cylinder to it. Then add a Cube to the Cylinder (Turret contains Cylinder,Cylinder contains Cube).
-2. Set the Transform of the Cube to be:
+1. In your Hierarchy, create a new empty GameObject and call it `Tank`. Create the following hierarchy within it:
 
-|         |x   |y   |z   |
-|---      |:-: |:-: |:-: |
-|Position |0   |0.5 |0.5   |
-|Rotation |0   |0   |0   |
-|Scale    |0.2   |0.2   |0.2 |
-
-3. Lastly, add an empty GameObject at the tip of the cube, and name it "Nozzle". Just like we did with the player.
-3. Add a `Rigidbody` component to the `Turret`. Set it to not use gravity, and to be Kinematic.
+- Tank (empty gameObject)
+  - Body (Cube)
+    - Turret (Cube)
+      - Barrel (Cube)
+        - Nozzle (empty gameObject)
 
 > Feel free to add materials, etc.
 
-### Scripting the turret, first pass
+### Moving the tank, first pass
 
-> We're now going to start to add some behaviour. The first thing we want to do is have the turret know when the player is nearby. We're going to use the same technique we used to create the `PainZone` in the health script section: a trigger.
+> We're now going to start to add some behaviour. We're going to reuse the `Radar` script from the Turret, so the Tank only starts attacking when the player in in range.
 
-1. On your `Turret` object, add a **SphereCollider**. Set it to be a trigger, with a radius of 4.
-2. Create a new script on your `Turret` object, called `EnemyRadar`. Open it in the editor.
-3. After the `Update` method, create two new methods:
+1. To the top-most `Tank` object, add a SphereCollider and the `EnemyRadar` script. Set the SphereCollider to be a Trigger, and the radius to 6.
 
-```C#
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Entered radar");
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        Debug.Log("Exited radar");
-    }
-```
-> Oooh we have a new built-in method here: `OnCollisionExit`. As you can probably guess, it gets called whenever something exits the trigger zone. Neat!
+> If you test the game, the Tank should rotate to look at the player when the player is in range. Neat!
+>
+> Next we're simply going to make the Tank move forward -- which, because we're already aiming at the player, means it'll go after the player.
 
-> Test this, and make sure it all works so far. Also, note how you can also set off the message by shooting a bullet towards the turret! This is because at the moment, *anything* that enters the trigger will set it off. Let's change that so it's just the player.
-
-> You could do this using the Layer Collision Matrix, like we did for projectiles; but let's try a new way. We're going to check within code.
-
-4. Add a new `if` condition to your code:
+2. Create a new script on the `Tank` called `TankMovement`, and open it in the editor.
+3. We need to hook the movement script up with the `EnemyRadar` script, just like we did with the `TurretAttack` script:
 
 ```C#
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("Entered radar");
-        }
-    }
-```
-
-> This will force a check for the "Player" tag. So make sure your player has that tag!
-
-> You might also have a case that it no longer works -- if this happens, it might be because you do not have a collider at the top level of your Player. Collisions and Triggers are only set off with Colliders, so find your topmost GameObject in the Player that has a Collider, and tag that object with "Player".
-
-5. Now we're going to use this information to change the *state* of the Turret. Add a new class variable at the top of the class:
-
-```C#
-public class EnemyRadar : MonoBehaviour
+public class TankMovement : MonoBehaviour
 {
-    public GameObject player;
-    public bool isActive;
- ```
-
- 6. And let's set it in our trigger methods:
-
-```C#
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("Entered radar");
-            isActive = true;
-        }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("Exited radar");
-            isActive = false;
-        }
-    }
- ```
-
- > Check to make sure the checkbox turns on when you get close.
-
-> Now let's turn the turret to face the player. We're going to use the very simple but effective `Transform.LookAt()` method. We'll check if we're active, and if we are, face the player.
-
-7. In your `Update` method, add the following code:
-
-```C#
-    void Update()
-    {
-        if (isActive)
-        {
-            transform.LookAt(player.transform);
-        }
-    }
-```
-
-> Not too complex! Test it, check if it's working.
-
-> Now we're going to plunder the `PlayerAttack` script, to harvest the code. This approach is okay for prototyping, but ultimately copy-pasting code is a terrible idea, and you should be looking for ways to refactor.
-
-8. Create a new script on the top level of the Turret, called `TurretAttack`. We're going to grab the code from `PlayerAttack`, and change the references to the player projectile:
-
-```C#
-public class TurretAttack : MonoBehaviour
-{
-    public GameObject turretBulletPrefab;
-    public Transform nozzle;
-    public float reloadTime = 0.6f;
-    public bool reloading;
+    public EnemyRadar radar;
     
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetButton("Fire1") && !reloading)
-        {
-            Debug.Log("Fire!");
-            Instantiate(turretBulletPrefab, nozzle.position, nozzle.rotation);
-            StartCoroutine("Reload");
-        }
-    }
-    
-    IEnumerator Reload()
-    {
-        reloading = true;
-        yield return new WaitForSeconds(reloadTime);
-        reloading = false;
-    }
-}
-```
-
-> Just changing the name of the prefab isn't going to make this work. We're still missing two things: how to replace the `GetButton` part of the `Update` method, and how to tie this script to the `EnemyRadar` script we just made.
-
-> Instead of checking for a button down, we're going to check if the radar is active. To do this, we need to have this script know about the radar script.
-
-9. At the top of the class, add a new class variable:
-
-```C#
-public class TurretAttack : MonoBehaviour
-{
-    public GameObject turretBulletPrefab;
-    public Transform nozzle;
-    public float reloadTime = 0.6f;
-    public bool reloading;
-
-    public EnemyRadar radar;
-```
-
-> Note how we can make the *type* of the variable the name of a script we've made. This strengthens the connection, as the editor can predict what variables and methods we now have access to.
-
-> You *can* set this connect now in the editor, but let's set that connection in code.
-
-10. Add the following to your `Start` method:
-
-```C#
     void Start()
     {
         radar = GetComponent<EnemyRadar>();
     }
 ```
 
-> See how we are using the *type* in the carets "<>"? This is us playing nicely with types! Not putting a cat into a bottle!
+> Test, and check that the `radar` field in the editor gets filled out when you play the game.
+>
+> Now let's do something with this connection!
 
-11. Now we can change the firing condition to check if the radar is active:
+4. In the `Update` function, we're going to check if the radar is active, and if so, move forward:
 
 ```C#
+    // Update is called once per frame
     void Update()
     {
-        if (radar.isActive && !reloading)
+        if (radar.isActive)
         {
-            Debug.Log("Fire!");
-            Instantiate(turretBulletPrefab, nozzle.position, nozzle.rotation);
-            StartCoroutine("Reload");
+            transform.Translate(Vector3.forward);
         }
     }
 ```
 
-> So now, instead of checking if the mouse button is down, we're simply checking if the player is within the radar range.
+> Test the game, and move the player close to the Tank. Notice how the Tank moves towards the player… possibly too quickly. Let's fix that.
+> >
+> Remember that the `Update` function runs every redraw, which has inconsistent speed depending on the speed of the computer. We're going to even this out with the classic Time.deltaTime trick. Remember this trick.
 
-12. In the editor, drag your `Nozzle` object into the Nozzle slot in the `TurretAttack` component.
+5. Change the code to:
 
-> We can't forget the projectile! We *can* test now, but without an enemy bullet, not much will happen.
+```C#
+        transform.Translate(Vector3.forward * Time.deltaTime);
+```
 
-13. In your Project panel, navigate to your Prefabs directory. You can click on the `PlayerBullet` prefab, and select **Edit > Duplicate** menu. Rename the new prefab `EnemyBullet`, and double-click it to edit.
-14. In the prefab, set its Layer to `EnemyBullet` (which you made earlier):
+> Better! We're being chased now, without being overrun every frame. Let's get some control over the Tank's speed.
 
-![Enemy bullet](images/09_EnemyBullet.png)
+6. Add a new class variable:
 
-15. Exit editing the prefab, select the `Turret` in the Hierarchy, and drag the `EnemyBullet` prefab into the `turretBulletPrefab` slot in the `TurretAttack` component:
+```C#
+public class TankMovement : MonoBehaviour
+{
+    public EnemyRadar radar;
+    public float translateSpeed = 4f;
+```
 
-![TurretAttack](images/09_TurretAttack.png)
+7. And modify the movement to use it:
 
-> Test out the game -- the turret should turn to face the player, and start shooting!
+```C#
+        transform.Translate(Vector3.forward * Time.deltaTime * translateSpeed);
+```
 
-> There are quite a lot of issues here, though. Plenty of opportunity to refactor. Some points to pay attention to:
-> - The `EnemyBullet` prefab is using the `PlayerBullet` script. Seems like we should either make a new script for the enemy, or rename the existing script. Looking ahead at the functionality we may want, we might want to have a separate script for enemy projectiles. But the core functionality is the same, so maybe we can turn the existing script into a parent script, and subclass all the variations.
-> - The turret code is hard-coded to check for a `EnemyRadar` script. But what if we didn't want a radar? Or if we wanted a different type of trigger method? We can probably abstract this out to be more flexible.
-> - We're also almost-wholesale copy-pasting from the `PlayerAttack` script. That should definitely change.
+> Alright! We have the Tank following the player, and we can control its speed.
+
+### Making the Tank shoot
+
+> Now that we have the Tank moving, let's make it shoot too.
+>
+> Just to make it work for now, we can reuse the TurretAttack script -- after all, it does everything we need! The reason we might want to make a different script is if we ever want to significantly change the functionality. For now, it's good.
+
+1. Add a `TurretAttack` script to the `Tank`. Drag the `Nozzle` from the `Tank` object into the Nozzle slot. Drag the `EnemyBullet` prefab into the prefab slot. Set the ReloadTime to 0.2.
+
+> Now the Tank also shoots at us! Superb. But, just like the Turret, it is impossible to destroy. Let's fix that too.
+
+2. Add a `Health` script to the `Tank`.
+
+> If, when you test, the Tank starts losing health even without being it, it probably means that the `EnemyBullet` prefab is set to collide with the `Enemy`. You can fix that in the **Edit > Project Settings…** menu. Make sure there is no check in the intersection between `EWnemyBullet` and `Enemy`:
+> 
+> ![Collision Matrix](images/09c_CollisionMatrix.png)
+
+> Now we need to get rid of the Tank when it loses all of its health. For now, we can just use the `TurretDeath` script.
+
+3. Add a `TurretDeath` script to the `Tank`.
+
+> We now have a decent working Tank enemy, that chases us and shoots at us.
+>
+> The main issue is that the Tank does not take the enironment into consideration. It will drive into walls, without any thought of going around them. They're currently pretty basic. Let's go deeper.
+
+### Moving the tank, second pass
+
+#### Setting up the scene
+
+> The next section will be quite involved. Don't be put off! Ask questions! But, ultimately, if you want to stick with the basic movement, you can.
+>
+> Let's take care of some general housekeeping, before we get to the details. If you still have a `WallMakerObject` in your scene, either disable it or delete it. It'll make things screwy (that's a technical term). Next, if you haven't already, create many walls in between your Tank and your player. Use the prefab `Wall`, as we need to make some small changes to it.
+
+1. Open your `Wall` prefab. **Important:** make sure you're opening the prefab for editing, and not just changing an instance of the Wall.
+2. At the top right of the Inspector, set the `Wall` to be **static**:
+
+![Wall Static](images/09c_WallStatic.png)
+
+> If it asks if you want to change all the children, do so.
+
+> By setting the Wall to static, it means it will not move during gameplay, so the navigation can be baked in around it before the game starts.
+
+3. Disable the `WallScript`, if you have one, by unchecking the checkbox next to the name:
+
+![Wall script disabled](images/09c_WallScriptDisabled.png)
+
+> Our walls will no longer be destroyable for now.
+
+4. Lastly, set the `Floor` (or `Plane` depending in how it's named) to static as well.
+
+> My little level will look like this:
+
+![Level layout](images/09c_LevelLayout.png)
+
+#### Creating the NavMesh
+
+> Next, we're going to create a **NavMesh**. This is a invisible representation of the traversable areas of your level. It gets generated outside of gameplay, and applied to any horizontal surface. It compensates for any static objects, so autonomous agents can avoid them.
+
+1. First, we need to open the Navigation panel, located at **Window > AI > Navigation**. It might pop up in the same spot as your Inspector, and may look like (depending on the selected tab):
+
+![Navigation Panel](images/09c_NavPanel1.png)
+![Navigation Panel](images/09c_NavPanel2.png) 
+
+2. In the Hierarchy, select the `Floor`. Then, in the Navigation panel, select the Bake tab and click the Bake button (awkward naming).
+
+![Bake button](images/09c_BakeButton.png)
+
+> After a short moment, my `Floor` now looks like this:
+
+![Baked floor](images/09c_BakedFloor.png)
+
+> The light areas are traversable, and the dark areas near the walls are not. 
 
 ## Wrap-Up
 
-In this, our first pass at autonomous behaviour, we were able to create a very rudimentary radar using the same technique as our earlier `PainZone` technique. We then connected this to a modified `PlayerAttack` script, using a direct GetComponent connection with a definite type. We also starting tracking the turret *state* using a simple boolean.
 
 ## Further Material
