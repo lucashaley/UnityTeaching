@@ -10,6 +10,8 @@
     - [Moving the tank, second pass](#moving-the-tank-second-pass)
       - [Setting up the scene](#setting-up-the-scene)
       - [Creating the NavMesh](#creating-the-navmesh)
+      - [Upgrading the Tank](#upgrading-the-tank)
+      - [Complete Code](#complete-code)
   - [Wrap-Up](#wrap-up)
   - [Further Material](#further-material)
 
@@ -179,9 +181,120 @@ public class TankMovement : MonoBehaviour
 
 ![Baked floor](images/09c_BakedFloor.png)
 
-> The light areas are traversable, and the dark areas near the walls are not. 
+> The light areas are traversable, and the dark areas near the walls are not. Neat!
+
+> Now we have a NavMesh, a representation of the traversable areas of the level. Next, we need to make the Tank pay attention to this NavMesh, and move around within its boundaries.
+
+#### Upgrading the Tank
+
+> This is the fun bit. We have two things to do: add a NavMeshAgent to the Tank, and write some code.
+
+1. Select the `Tank` gameObject, and click the **Add Component** button at the bottom on the Inspector. In the menu, add a **NavMeshAgent**.
+
+> A NavMeshAgent is a component that interacts with the NavMesh.
+
+2. Open the `TankMovement` script in the editor.
+3. Add a new class variable:
+
+```C#
+public class TankMovement : MonoBehaviour
+{
+    public EnemyRadar radar;
+    public float translateSpeed = 10f;
+    public bool useNavMesh;
+```
+
+4. Now we can add a conditional to switch between using the NavMesh or not:
+
+```C#
+    void Update()
+    {
+        if (radar.isActive)
+        {
+            if (useNavMesh)
+            {
+                
+            }
+            else
+            {
+                transform.Translate(Vector3.forward * Time.deltaTime * translateSpeed);
+            }
+        }
+    }
+```
+
+> Check to see if the code compiles. When you play the game, you'll still be using the old code.
+> Now we've got that nice little gap to take care of. Before we do, let's talk about the NavMeshAgent. The NavMeshAgent uses an algorithm called *A** to perform pathfinding from where the agent currently is to a set destination. It's a common game algorithm, used very frequently.
+
+5. First, we're going to get the NavMeshAgent in our code:
+
+```C#
+if (useNavMesh)
+            {
+                var agent = GetComponent<NavMeshAgent>();
+```
+
+> Here we're using the **var** keyword. This is a useful shorthand we can use *inside* of methods, where we don't always need to specify variable types. If you'd like to use `NavMeshAgent agent` instead, that's okay too.
+
+6. Now we can set the destination of the NavMeshAgent. In this case, we'll grab the player's location from the `EnemyRadar` code:
+
+```C#
+            if (useNavMesh)
+            {
+                var agent = GetComponent<NavMeshAgent>();
+                agent.destination = radar.player.transform.position;
+            }
+```
+
+> This isn't the best solution, as if we decide to not attach a Radar, we won't have the player. In that case, we'd have to get the player here, in the same way we did in the Radar.
+
+7. Back in the editor, make sure you check the `UseNavMesh` checkbox.
+
+> Try the code. Hopefully, when you get close enough, the Tank will navigate around walls to get close to the player.
+
+> Take a look at the `NavMeshAgent` component properties. There's a lot there -- make sure to read the docs to get more information.
+
+#### Complete Code
+
+```C#
+public class TankMovement : MonoBehaviour
+{
+    public EnemyRadar radar;
+    public float translateSpeed = 10f;
+    public bool useNavMesh;
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        radar = GetComponent<EnemyRadar>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (radar.isActive)
+        {
+            if (useNavMesh)
+            {
+                var agent = GetComponent<NavMeshAgent>();
+                agent.destination = radar.player.transform.position;
+            }
+            else
+            {
+                transform.Translate(Vector3.forward * Time.deltaTime * translateSpeed);
+            }
+        }
+    }
+}
+```
 
 ## Wrap-Up
 
+In this unit, we tried two different techiques to make the Tank move. The NavMeshAgent allows for some quite sophisticated movement around a complex map.
+
+Going forward, you should take a look at the other classes of the Unity Navigation, including `NavMeshObstacle`, which might help with our Turrets… after they are destroyed.
 
 ## Further Material
+
+- [Unity Manual on NavMeshAgents](https://docs.unity3d.com/ScriptReference/AI.NavMeshAgent.html)
+- [Unity Manual on NavMeshObstacle](https://docs.unity3d.com/ScriptReference/AI.NavMeshObstacle.html)
