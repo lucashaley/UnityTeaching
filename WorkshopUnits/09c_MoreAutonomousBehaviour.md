@@ -5,6 +5,9 @@
   - [Goal](#goal)
   - [Process](#process)
     - [Create a tank](#create-a-tank)
+      - [Body](#body)
+      - [Turret](#turret)
+      - [Barrel](#barrel)
     - [Moving the tank, first pass](#moving-the-tank-first-pass)
     - [Making the Tank shoot](#making-the-tank-shoot)
     - [Moving the tank, second pass](#moving-the-tank-second-pass)
@@ -37,6 +40,37 @@ To make an enemy that persues the player while shooting at it.
     - Turret (Cube)
       - Barrel (Cube)
         - Nozzle (empty gameObject)
+
+And use the following transforms:
+
+--- 
+
+#### Body
+|         |x   |y   |z   |
+|---      |:-: |:-: |:-: |
+|Position |0   |0.25 |0   |
+|Rotation |0   |0    |0   |
+|Scale    |1   |0.5  |1 |
+
+---
+
+#### Turret
+|         |x   |y   |z   |
+|---      |:-: |:-: |:-: |
+|Position |0   |0.75 |0   |
+|Rotation |0   |0   |0   |
+|Scale    |0.75   |0.5   |0.75 |
+
+---
+
+#### Barrel
+|         |x   |y   |z   |
+|---      |:-: |:-: |:-: |
+|Position |0   |0 |0.5   |
+|Rotation |0   |0   |0   |
+|Scale    |0.15   |0.5   |0.15 |
+
+---
 
 > Feel free to add materials, etc.
 
