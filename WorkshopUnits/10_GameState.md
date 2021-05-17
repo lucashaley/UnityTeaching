@@ -6,6 +6,10 @@
   - [Creating the lives system](#creating-the-lives-system)
   - [Creating the score system](#creating-the-score-system)
   - [Creating the timer system](#creating-the-timer-system)
+  - [Complete code](#complete-code)
+    - [GameCore.cs](#gamecorecs)
+    - [PlayerDeath.cs](#playerdeathcs)
+    - [TurretDeath.cs](#turretdeathcs)
 - [Wrap-Up](#wrap-up)
 - [Further Material](#further-material)
 
@@ -198,6 +202,105 @@ public class GameCore : MonoBehaviour
 ```
 
 > Test your game, and see if you get the console message after twenty seconds.
+
+### Complete code
+
+#### GameCore.cs
+```C#
+public class GameCore : MonoBehaviour
+{
+    public int playerLives = 3;
+    public int playerScore = 0;
+
+    public float totalLevelSeconds = 20f; // we're going to set this low just for testing
+    public float currentLevelSeconds;
+
+    void Start()
+    {
+        currentLevelSeconds = totalLevelSeconds;
+    }
+
+    private void Update()
+    {
+        currentLevelSeconds -= Time.deltaTime;
+        if (currentLevelSeconds <= 0f)
+        {
+            // Game over!
+            Debug.Log("Time out!");
+        }
+    }
+
+    public void DecreasePlayerLives()
+    {
+        playerLives--;
+        if (playerLives <= 0)
+        {
+            // Game over, dude!
+            Debug.Log("Game over!");
+        }
+    }
+
+    public void IncreasePlayerScore(int value)
+    {
+        playerScore += value;
+    }
+}
+```
+
+#### PlayerDeath.cs
+```C#
+public class PlayerDeath : Death
+{
+    public Vector3 spawnLocation;
+    public Quaternion spawnRotation;
+
+    public GameCore gameCore;
+
+    void Start()
+    {
+        spawnLocation = transform.position;
+        spawnRotation = transform.rotation;
+
+        gameCore = GameObject.FindObjectOfType<GameCore>();
+    }
+    
+    public override void HandleDeath()
+    {
+        // decrease the lives
+        gameCore.DecreasePlayerLives();
+        
+        GetComponent<Rigidbody>().position = spawnLocation;
+        GetComponent<Rigidbody>().rotation = spawnRotation;
+        
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+
+        // Restore the player health to maximum
+        if (TryGetComponent<Health>(out Health health))
+        {
+            health.RecoverFull();
+        }
+    }
+}
+```
+
+#### TurretDeath.cs
+```C#
+public class TurretDeath : Death
+{
+    public GameCore gameCore;
+    public int value = 10;
+    void Start()
+    {
+        gameCore = GameObject.FindObjectOfType<GameCore>();
+    }
+    public override void HandleDeath()
+    {
+        gameCore.IncreasePlayerScore(value);
+        Destroy(gameObject);
+    }
+}
+```
 
 ## Wrap-Up
 
