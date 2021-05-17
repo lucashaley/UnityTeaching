@@ -1,4 +1,4 @@
-# Unit 07: User Interface
+# Unit 07: User Interface  <!-- omit in toc -->
 
 ## Introduction
 

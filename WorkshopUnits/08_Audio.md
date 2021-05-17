@@ -1,4 +1,4 @@
-# Unit 08: Audio
+# Unit 08: Audio  <!-- omit in toc -->
 
 ## Introduction
 

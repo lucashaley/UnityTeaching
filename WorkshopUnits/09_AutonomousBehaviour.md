@@ -1,13 +1,12 @@
-# Unit 09: Autonomous Behaviour
+# Unit 09: Autonomous Behaviour  <!-- omit in toc -->
 
-- [Unit 09: Autonomous Behaviour](#unit-09-autonomous-behaviour)
-  - [Introduction](#introduction)
-  - [Goal](#goal)
-  - [Process](#process)
-    - [Create a turret](#create-a-turret)
-    - [Scripting the turret, first pass](#scripting-the-turret-first-pass)
-  - [Wrap-Up](#wrap-up)
-  - [Further Material](#further-material)
+- [Introduction](#introduction)
+- [Goal](#goal)
+- [Process](#process)
+  - [Create a turret](#create-a-turret)
+  - [Scripting the turret, first pass](#scripting-the-turret-first-pass)
+- [Wrap-Up](#wrap-up)
+- [Further Material](#further-material)
 
 ## Introduction
 

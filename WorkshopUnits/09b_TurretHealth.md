@@ -1,12 +1,11 @@
-# Unit 09b: Turret Health
+# Unit 09b: Turret Health  <!-- omit in toc -->
 
-- [Unit 09b: Turret Health](#unit-09b-turret-health)
-  - [Introduction](#introduction)
-  - [Goal](#goal)
-  - [Process](#process)
-    - [Complete Code](#complete-code)
-  - [Wrap-Up](#wrap-up)
-  - [Further Material](#further-material)
+- [Introduction](#introduction)
+- [Goal](#goal)
+- [Process](#process)
+  - [Complete Code](#complete-code)
+- [Wrap-Up](#wrap-up)
+- [Further Material](#further-material)
 
 ## Introduction
 

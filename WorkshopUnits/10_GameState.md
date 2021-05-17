@@ -1,4 +1,4 @@
-# Unit 10: Scene Management <!-- omit in toc -->
+# Unit 10: Game State  <!-- omit in toc -->
 
 - [Introduction](#introduction)
 - [Goal](#goal)
