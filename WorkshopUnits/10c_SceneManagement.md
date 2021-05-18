@@ -203,6 +203,8 @@ public class GameCore : MonoBehaviour
         currentLevelSeconds = totalLevelSeconds;
         currentPlayerLives = startingPlayerLives;
         currentLevelSeconds = totalLevelSeconds;
+
+        // connect the text UI
     }
 ```
 
