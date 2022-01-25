@@ -1,4 +1,4 @@
-# Unit 04c: Refactoring  <!-- omit in toc -->
+# Unit 04_04: Refactoring  <!-- omit in toc -->
 
 - [Introduction](#introduction)
 - [Goal](#goal)
@@ -49,7 +49,7 @@ So instead of writing it twice, we are going to refactor the code into a variabl
 
 ```C#
         verticalInput = Input.GetAxis("Vertical") * Time.deltaTime * translateSpeed;
-        
+
         // Create movement Vector3 variable in refactor
         Vector3 movementDirection = new Vector3(horizontalInput, 0f, verticalInput);
 
@@ -103,7 +103,7 @@ Which is also much easier to read!
         // Debug.Log(Input.GetAxis("Horizontal"));
         horizontalInput = Input.GetAxis("Horizontal") * Time.deltaTime * translateSpeed;
         verticalInput = Input.GetAxis("Vertical") * Time.deltaTime * translateSpeed;
-        
+
         // Create movement Vector3 variable in refactor
         Vector3 movementDirection = new Vector3(horizontalInput, 0f, verticalInput);
 ```

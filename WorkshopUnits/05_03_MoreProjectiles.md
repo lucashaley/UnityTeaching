@@ -1,4 +1,4 @@
-# Unit 05c: More Projectiles  <!-- omit in toc -->
+# Unit 05_03: More Projectiles  <!-- omit in toc -->
 
 - [Introduction](#introduction)
 - [Goal](#goal)

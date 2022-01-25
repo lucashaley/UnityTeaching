@@ -1,4 +1,4 @@
-# Unit 05b: Projectiles  <!-- omit in toc -->
+# Unit 05_02: Projectiles  <!-- omit in toc -->
 
 - [Introduction](#introduction)
 - [Goal](#goal)
@@ -58,7 +58,7 @@ As with our wall example, we first need to have a Prefab. Let's make a player bu
 public class PlayerAttack : MonoBehaviour
 {
     public GameObject playerBulletPrefab;
-    
+
     // Start is called before the first frame update
     void Start()
 ```
@@ -82,7 +82,7 @@ public class PlayerAttack : MonoBehaviour
 {
     public GameObject playerBulletPrefab;
     public Transform nozzle;
-    
+
     // Start is called before the first frame update
 ```
 And drag the Nozzle object from the Scene to the new slot.
@@ -124,7 +124,7 @@ public class PlayerBullet : MonoBehaviour
 {
     public Rigidbody rbody;
     public float speed = 10;
-    
+
     // Start is called before the first frame update
 ```
 

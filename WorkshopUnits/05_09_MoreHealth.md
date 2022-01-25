@@ -1,4 +1,4 @@
-# Unit 05f: More Health <!-- omit in toc -->
+# Unit 05_09: More Health <!-- omit in toc -->
 - [Introduction](#introduction)
 - [Goal](#goal)
 - [Process](#process)
@@ -37,7 +37,7 @@ public class Health : MonoBehaviour
     {
         // Take the damage passed into this method
         health -= damage;
-        
+
         // If we have zero or less health, then call the Death script
         // that is attached to this GameObject.
         if (health <= 0)
@@ -53,12 +53,12 @@ public class Health : MonoBehaviour
             }
         }
     }
-    
+
     // This was our first pass at the bullet
     // But if we kept going with this pattern, we'd need a separate if condition
     // for each and every type of collision.
     // Instead, the Bullet will tell us how much damage to take.
-    
+
     /*
     void OnCollisionEnter(Collision other)
     {
@@ -90,7 +90,7 @@ public class Health : MonoBehaviour
     {
         // Apply the recovery
         currentHealth += recovery;
-        
+
         // If our current health is more than our maximum allowed
         // then clamp it
         if (currentHealth > maxHealth)
@@ -119,7 +119,7 @@ public class Health : MonoBehaviour
         // Debug.Log("Player has died!");
         GetComponent<Rigidbody>().position = spawnLocation;
         GetComponent<Rigidbody>().rotation = spawnRotation;
-        
+
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
 
@@ -138,7 +138,7 @@ public class Health : MonoBehaviour
 > Now we need to make a health pickup for the player to collect.
 
 1. In your hierarchy, create a new Empty GameObject. While it's still selected, right-click on it to make a child Sphere. Rename the GameObject to `HealthPickup`, and scale the Sphere to 0.5 on all axes.
-2. Create a new Layer called "Pickups", and assign the `HealthPickup` to that layer. 
+2. Create a new Layer called "Pickups", and assign the `HealthPickup` to that layer.
 3. In your Project Settings, turn off all collisions for the Pickups layer except for the Player (and the PlayerProjectiles, if you want to be able to shoot pickups):
 
 ![Collision matrix](images/05g_CollisionMatrix.png)
@@ -219,7 +219,7 @@ public class HealthPickup : Pickup
         {
             health.Recover(healthBoost);
         }
-        
+
         Destroy(gameObject);
     }
 ```

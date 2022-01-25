@@ -1,4 +1,4 @@
-# Unit 04b: Prefabs  <!-- omit in toc -->
+# Unit 04_03: Prefabs  <!-- omit in toc -->
 
 - [Introduction](#introduction)
 - [Goal](#goal)
@@ -33,7 +33,7 @@ For now, we are going to make a Prefab from the wall, so we can make more walls 
 1. Make sure you still have a `Wall` object in your Hierarchy, and that it's still at position `{0, 0, 0}`. It should also have a `Cube` child.
 2. In your Project panel, navigate into the Prefabs folder in your named folder.
 3. Back in the Hierarchy panel, select your `Wall` object. Then drag it from the Hierarchy panel into the Project panel.
-4. In the Prefabs folder, you should now see a new Prefab, with a blue cube icon. 
+4. In the Prefabs folder, you should now see a new Prefab, with a blue cube icon.
 
 ![New Prefab](images/04b_PrefabFinished.png)
 

@@ -1,4 +1,4 @@
-# Unit 05d: Camera Movement <!-- omit in toc -->
+# Unit 05_04: Camera Movement <!-- omit in toc -->
 - [Introduction](#introduction)
 - [Goal](#goal)
 - [Process](#process)
@@ -23,7 +23,7 @@ public class CameraFollow : MonoBehaviour
 {
     public Transform player;
     public float smoothing = 0.2f;
-    
+
     private Vector3 offset;
     private Vector3 velocity = Vector3.zero;
 ```

@@ -1,4 +1,4 @@
-# Unit 05g: Spawning <!-- omit in toc -->
+# Unit 05_08: Spawning <!-- omit in toc -->
 - [Introduction](#introduction)
 - [Goal](#goal)
 - [Process](#process)
@@ -17,7 +17,7 @@ The goal of this unit is to make a respawn function for the player.
 
 1. First thing, let's make a zone that causes damage to the player. In your scene, create a new empty GameObject and call it "PainZone". Move it to `-4, 0, 0`.
 2. Add a BoxCollider to the PainZone. Set the center to `0, 0.5, 0`, and the size to `2, 1, 2`.
-3. Set the BoxCollider to be `IsTrigger`. 
+3. Set the BoxCollider to be `IsTrigger`.
 
 > Setting a collider to Trigger makes it so it doesn't stop anything, but still fires off a notification.
 
@@ -112,7 +112,7 @@ Which sets those variables when the game starts.
         // Debug.Log("Player has died!");
         GetComponent<Rigidbody>().position = spawnLocation;
         GetComponent<Rigidbody>().rotation = spawnRotation;
-        
+
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
     }

@@ -1,5 +1,6 @@
 # Unit 06: States <!-- omit in toc -->
 
+<!-- TOC START min:2 max:4 link:true asterisk:false update:true -->
 - [Introduction](#introduction)
 - [Goal](#goal)
 - [Process](#process)
@@ -12,6 +13,7 @@
   - [Complete Code](#complete-code)
 - [Wrap-Up](#wrap-up)
 - [Further Material](#further-material)
+<!-- TOC END -->
 
 ## Introduction
 
@@ -28,15 +30,15 @@ The goal of this unit is to make a door that opens on contact from the player, a
 1. Create an empty game object in your Hierarchy, and call it `Door`. Add as a child a cube. Position the `Door` object (*not* the Cube) somewhere useful in your scene.
 2. Set the Transform of the Cube to be:
 
-|         |x   |y   |z   |
-|---      |:-: |:-: |:-: |
-|Position |0   |0.5 |0   |
-|Rotation |0   |0   |0   |
-|Scale    |2   |1   |0.5 |
+    |         |x   |y   |z   |
+    |---      |:-: |:-: |:-: |
+    |Position |0   |0.5 |0   |
+    |Rotation |0   |0   |0   |
+    |Scale    |2   |1   |0.5 |
 
 3. Add a `Rigidbody` component to the `Door`. Set it to not use gravity, and to be Kinematic.
 
-> Feel free to add materials, etc.
+    > Feel free to add materials, etc.
 
 ### Scripting the door, first pass
 
@@ -45,66 +47,66 @@ The goal of this unit is to make a door that opens on contact from the player, a
 1. Select the `Door`, and add a new script to it called `Door`. Open the script in your editor.
 2. Create two new class variables:
 
-```C#
-public class Door : MonoBehaviour
-{
-    public Vector3 closePosition;
-    public Vector3 openPosition;
-```
+    ```C#
+    public class Door : MonoBehaviour
+    {
+        public Vector3 closePosition;
+        public Vector3 openPosition;
+    ```
 
 3. We'll set the `closePosition` variable in our `Start` method, just like we did for the Respawn functionality:
 
-```C#
-    void Start()
-    {
-        closePosition = transform.position;
-    }
-```
+    ```C#
+        void Start()
+        {
+            closePosition = transform.position;
+        }
+    ```
 
-And we need to set the `openPosition` in the editor -- set it to the same values as it's current position, but subtract 2 from the `x` value.
+    And we need to set the `openPosition` in the editor -- set it to the same values as it's current position, but subtract 2 from the `x` value.
 
 4. Next, let's make a method that opens our door:
 
-```C#
-    void OpenDoor()
-    {
-        Debug.Log("OpenDoor");
-    }
-```
+    ```C#
+        void OpenDoor()
+        {
+            Debug.Log("OpenDoor");
+        }
+    ```
 
 5. And we'll call this method when something collides with the door:
 
-```C#
-    private void OnCollisionEnter(Collision other)
-    {
-        OpenDoor();
-    }
-```
+    ```C#
+        private void OnCollisionEnter(Collision other)
+        {
+            OpenDoor();
+        }
+    ```
 
-> When you test it, you should get the Debug message when the player collides with the door.
+    > When you test it, you should get the Debug message when the player collides with the door.
 
-> Now, let's make the door move. To make it move, we're going to use something called a **lerp**, which is shorthand for *linear interpolation*. It's a way to have a value – in this case, the location – change over time. Lerps get used a lot in games.
-> In Unity, we have access to the `Vector3.Lerp` method, and we'll use that. At the minimum, it takes three parameters: the starting value, the ending value, and `t`, a number from 0 to 1 which is the percentage along the line to set the current value.
-> So if we were lerping from A to B:
->`A---------B`
-> If we set `t`= 0, the lerp would be at A:
->`A*--------B` 
-> And if we set `t`= 1, the lerp would be at B:
->`A--------*B`
-> If `t`= 0.5, the lerp would be halfway:
->`A----*----B`
+    > Now, let's make the door move. To make it move, we're going to use something called a **lerp**, which is shorthand for *linear interpolation*. It's a way to have a value – in this case, the location – change over time. Lerps get used a lot in games.
+    > In Unity, we have access to the `Vector3.Lerp` method, and we'll use that. At the minimum, it takes three parameters: the starting value, the ending value, and `t`, a number from 0 to 1 which is the percentage along the line to set the current value.
+    > So if we were lerping from A to B:
+    >`A---------B`
+    > If we set `t`= 0, the lerp would be at A:
+    >`A*--------B`
+    > And if we set `t`= 1, the lerp would be at B:
+    >`A--------*B`
+    > If `t`= 0.5, the lerp would be halfway:
+    >`A----*----B`
 
 6. In your `OpenDoor` method, add the following line:
 
-```C#
-    void OpenDoor()
-    {
-        Debug.Log("OpenDoor");
-        transform.position = Vector3.Lerp(closePosition, openPosition, 1.0f);
-    }
-```
+    ```C#
+        void OpenDoor()
+        {
+            Debug.Log("OpenDoor");
+            transform.position = Vector3.Lerp(closePosition, openPosition, 1.0f);
+        }
+    ```
 
-> Now when you test, the door jumps from the closed to the open positions instantly.
+    > Now when you test, the door jumps from the closed to the open positions instantly.
 
 ### Scripting the door, second pass
 
@@ -113,32 +115,32 @@ And we need to set the `openPosition` in the editor -- set it to the same values
 
 1. Change your `OpenDoor` method to return an `IEnumerator` instead of `void`. This makes it a coroutine:
 
-```C#
-    IEnumerator OpenDoor()
-    {
-```
+    ```C#
+        IEnumerator OpenDoor()
+        {
+    ```
 
 2. And in your `OnCollisionEnter` method, instead of calling `OpenDoor` we now need to start a coroutine:
 
-```C#
-    private void OnCollisionEnter(Collision other)
-    {
-        StartCoroutine("OpenDoor");
-    }
-```
+    ```C#
+        private void OnCollisionEnter(Collision other)
+        {
+            StartCoroutine("OpenDoor");
+        }
+    ```
 
-> These two steps are the basic way to create a coroutine from existing code. Very useful!
+    > These two steps are the basic way to create a coroutine from existing code. Very useful!
 
 3. Now we need to create some code to make the door move. The first step is to make a new class variable to store a float about how long we want the animation to last:
 
-```C#
-public class Door : MonoBehaviour
-{
-    public Vector3 closePosition;
-    public Vector3 openPosition;
+    ```C#
+    public class Door : MonoBehaviour
+    {
+        public Vector3 closePosition;
+        public Vector3 openPosition;
 
-    public float duration = 1.2f;
-```
+        public float duration = 1.2f;
+    ```
 
 4. We can then use that duration in our animation:
 
@@ -154,7 +156,7 @@ public class Door : MonoBehaviour
         {
             transform.position = Vector3.Lerp(closePosition, openPosition, timeElapsed / duration);
             timeElapsed += Time.deltaTime;
-            
+
             // This tells the coroutine to run the while loop again
             yield return null;
         }
@@ -164,7 +166,7 @@ public class Door : MonoBehaviour
     }
 ```
 
-> We're going to do some somewhat tricky stuff here, but don't stress about it -- what we're doing is setting up a `while` loop to loop until we reach the duration time. Inside the loop, we move the door a little bit, and increase the time. 
+> We're going to do some somewhat tricky stuff here, but don't stress about it -- what we're doing is setting up a `while` loop to loop until we reach the duration time. Inside the loop, we move the door a little bit, and increase the time.
 
 > Lerps notoriously don't always reach the very end -- they'll get to 2.999986 instead of 3, for example. So after we complete the duration loop, we just force the final value.
 
@@ -176,64 +178,64 @@ public class Door : MonoBehaviour
 
 1. At the top of you class declaration, add the following:
 
-```C#
-public class Door : MonoBehaviour
-{
-    public Vector3 closePosition;
-    public Vector3 openPosition;
+    ```C#
+    public class Door : MonoBehaviour
+    {
+        public Vector3 closePosition;
+        public Vector3 openPosition;
 
-    public float duration = 1.2f;
+        public float duration = 1.2f;
 
-    public enum DoorState {
-        Closed, Open, IsOpening, IsClosing
-    };
-    public DoorState doorState = DoorState.Closed;
-```
+        public enum DoorState {
+            Closed, Open, IsOpening, IsClosing
+        };
+        public DoorState doorState = DoorState.Closed;
+    ```
 
-> Note how we create the definition first, then create a new variable to hold the actual value. Also, check it out in the editor -- we now have a cool drop-down menu that we can use to change the state in the editor (if we ever need to).
+    > Note how we create the definition first, then create a new variable to hold the actual value. Also, check it out in the editor -- we now have a cool drop-down menu that we can use to change the state in the editor (if we ever need to).
 
 2. Now we can use those states in our method:
 
-```C#
-    IEnumerator OpenDoor()
-    {
-        // Set the state
-        doorState = DoorState.IsOpening;
-
-        // this is the method variable we use to track the progress of the lerp
-        float timeElapsed = 0f;
-
-        while (timeElapsed < duration)
+    ```C#
+        IEnumerator OpenDoor()
         {
-            transform.position = Vector3.Lerp(closePosition, openPosition, timeElapsed / duration);
-            timeElapsed += Time.deltaTime;
-            
-            // This tells the coroutine to run the while loop again
-            yield return null;
+            // Set the state
+            doorState = DoorState.IsOpening;
+
+            // this is the method variable we use to track the progress of the lerp
+            float timeElapsed = 0f;
+
+            while (timeElapsed < duration)
+            {
+                transform.position = Vector3.Lerp(closePosition, openPosition, timeElapsed / duration);
+                timeElapsed += Time.deltaTime;
+
+                // This tells the coroutine to run the while loop again
+                yield return null;
+            }
+
+            // once we're done with the loop, we force the final position just in case
+            transform.position = openPosition;
+            // Set the state
+            doorState = DoorState.Open;
         }
+    ```
 
-        // once we're done with the loop, we force the final position just in case
-        transform.position = openPosition;
-        // Set the state
-        doorState = DoorState.Open;
-    }
-```
-
-> Now when you test, you can see the state change in the editor. Now we can use this state to stop any other movement!
+    > Now when you test, you can see the state change in the editor. Now we can use this state to stop any other movement!
 
 3. Change your `OnCollisionEnter` code:
 
-```C#
-    private void OnCollisionEnter(Collision other)
-    {
-        if (doorState == DoorState.Closed)
+    ```C#
+        private void OnCollisionEnter(Collision other)
         {
-            StartCoroutine("OpenDoor");
+            if (doorState == DoorState.Closed)
+            {
+                StartCoroutine("OpenDoor");
+            }
         }
-    }
-```
+    ```
 
-> The only time we want the door to open is when it's closed.
+    > The only time we want the door to open is when it's closed.
 
 ### Scripting the door, fourth pass
 
@@ -241,72 +243,72 @@ public class Door : MonoBehaviour
 
 1. Create a `CloseDoor` method. It'll be much the same as the `OpenDoor` script:
 
-```C#
-    IEnumerator CloseDoor()
-    {
-        // Set the state
-        doorState = DoorState.IsClosing;
-
-        // this is the method variable we use to track the progress of the lerp
-        float timeElapsed = 0f;
-
-        while (timeElapsed < duration)
+    ```C#
+        IEnumerator CloseDoor()
         {
-            transform.position = Vector3.Lerp(openPosition, closePosition, timeElapsed / duration);
-            timeElapsed += Time.deltaTime;
+            // Set the state
+            doorState = DoorState.IsClosing;
 
-            // This tells the coroutine to run the while loop again
-            yield return null;
+            // this is the method variable we use to track the progress of the lerp
+            float timeElapsed = 0f;
+
+            while (timeElapsed < duration)
+            {
+                transform.position = Vector3.Lerp(openPosition, closePosition, timeElapsed / duration);
+                timeElapsed += Time.deltaTime;
+
+                // This tells the coroutine to run the while loop again
+                yield return null;
+            }
+
+            // once we're done with the loop, we force the final position just in case
+            transform.position = closePosition;
+            // Set the state
+            doorState = DoorState.Closed;
         }
+    ```
 
-        // once we're done with the loop, we force the final position just in case
-        transform.position = closePosition;
-        // Set the state
-        doorState = DoorState.Closed;
-    }
-```
-
-> Any time you copy-paste a chunk of code like this, it's a big flag that you can refactor the code later.
+    > Any time you copy-paste a chunk of code like this, it's a big flag that you can refactor the code later.
 
 2. And then we can change the `OnCollisionEnter` code:
 
-```C#
-    private void OnCollisionEnter(Collision other)
-    {
-        if (doorState == DoorState.Closed)
+    ```C#
+        private void OnCollisionEnter(Collision other)
         {
-            StartCoroutine("OpenDoor");
+            if (doorState == DoorState.Closed)
+            {
+                StartCoroutine("OpenDoor");
+            }
+
+            if (doorState == DoorState.Open)
+            {
+                StartCoroutine("CloseDoor");
+            }
         }
+    ```
 
-        if (doorState == DoorState.Open)
-        {
-            StartCoroutine("CloseDoor");
-        }
-    }
-```
+    > Test it out, and make sure you can close the door once you've opened it.
 
-> Test it out, and make sure you can close the door once you've opened it.
-
-> Speaking of refactoring, we're going to do a quick refactor right now. When you use enums, you can also use another structure called a **switch**. Switches allow you to collapse a big list of `if` statements together. If you imagine a more complicated state machine than a door, you'll end up with a lot of `if`s, which can get unweildy. Let's use a switch right now.
+    > Speaking of refactoring, we're going to do a quick refactor right now. When you use enums, you can also use another structure called a **switch**. Switches allow you to collapse a big list of `if` statements together. If you imagine a more complicated state machine than a door, you'll end up with a lot of `if`s, which can get unweildy. Let's use a switch right now.
 
 3. Replace your `OnCollisionEnter` code with this:
 
-```C#
-    private void OnCollisionEnter(Collision other)
-    {
-        switch (doorState)
+    ```C#
+        private void OnCollisionEnter(Collision other)
         {
-            case DoorState.Closed:
-                StartCoroutine("OpenDoor");
-                break;
-            case DoorState.Open:
-                StartCoroutine("CloseDoor");
-                break;
+            switch (doorState)
+            {
+                case DoorState.Closed:
+                    StartCoroutine("OpenDoor");
+                    break;
+                case DoorState.Open:
+                    StartCoroutine("CloseDoor");
+                    break;
+            }
         }
-    }
-```
+    ```
 
-> Note how at the end of every case, we use `break;`. This is because with switch statements, you can allow it to continue to check states that follow afterwards; you won't do this often though. So remember your `break;` statements.
+    > Note how at the end of every case, we use `break;`. This is because with switch statements, you can allow it to continue to check states that follow afterwards; you won't do this often though. So remember your `break;` statements.
 
 ### Closing after a time delay
 
@@ -314,44 +316,44 @@ public class Door : MonoBehaviour
 
 1. Firstly, let's make a new class variable:
 
-```C#
-public class Door : MonoBehaviour
-{
-    public Vector3 closePosition;
-    public Vector3 openPosition;
+    ```C#
+    public class Door : MonoBehaviour
+    {
+        public Vector3 closePosition;
+        public Vector3 openPosition;
 
-    public float duration = 1.2f;
-    public float closeDelay = 0.8f;
-```
+        public float duration = 1.2f;
+        public float closeDelay = 0.8f;
+    ```
 
 2. Next, let's make a new coroutine to handle the waiting:
 
-```C#
-    IEnumerator CloseDoorAfterDelay()
-    {
-        yield return new WaitForSeconds(closeDelay);
-        if (doorState == DoorState.Open)
+    ```C#
+        IEnumerator CloseDoorAfterDelay()
         {
-            StartCoroutine("CloseDoor");
+            yield return new WaitForSeconds(closeDelay);
+            if (doorState == DoorState.Open)
+            {
+                StartCoroutine("CloseDoor");
+            }
         }
-    }
-```
+    ```
 
-> Note how all we're doing is waiting for the delay, then starting a new `CloseDoor` coroutine. Simple!
+    > Note how all we're doing is waiting for the delay, then starting a new `CloseDoor` coroutine. Simple!
 
 3. Lastly, we can start the coroutine at the end of the `DoorOpen` method:
 
-```C#
-        // once we're done with the loop, we force the final position just in case
-        transform.position = openPosition;
-        // Set the state
-        doorState = DoorState.Open;
+    ```C#
+            // once we're done with the loop, we force the final position just in case
+            transform.position = openPosition;
+            // Set the state
+            doorState = DoorState.Open;
 
-        // Close the door after a delay
-        StartCoroutine("CloseDoorAfterDelay");
-```
+            // Close the door after a delay
+            StartCoroutine("CloseDoorAfterDelay");
+    ```
 
-> Test it, and make sure it's all working.
+    > Test it, and make sure it's all working.
 
 ### Complete Code
 
@@ -371,7 +373,7 @@ public class Door : MonoBehaviour
         Closed, Open, IsOpening, IsClosing
     };
     public DoorState doorState = DoorState.Closed;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -403,7 +405,7 @@ public class Door : MonoBehaviour
         {
             transform.position = Vector3.Lerp(closePosition, openPosition, timeElapsed / duration);
             timeElapsed += Time.deltaTime;
-            
+
             // This tells the coroutine to run the while loop again
             yield return null;
         }

@@ -1,4 +1,4 @@
-# Unit 04b: GetComponent <!-- omit in toc -->
+# Unit 04_02: GetComponent <!-- omit in toc -->
 
 - [Introduction](#introduction)
 - [Goal](#goal)

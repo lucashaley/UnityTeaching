@@ -1,4 +1,4 @@
-# Unit 05e: Getting Shot <!-- omit in toc -->
+# Unit 05_05: Getting Shot <!-- omit in toc -->
 - [Introduction](#introduction)
 - [Goal](#goal)
 - [Process](#process)
@@ -44,7 +44,7 @@ When you play the game, you should get the Debug message when you shoot a wall.
     void OnCollisionEnter(Collision other)
     {
         Debug.Log("Collision!");
-        
+
         if (other.gameObject.TryGetComponent(out PlayerBullet bullet))
         {
             Destroy(bullet.gameObject);
@@ -63,7 +63,7 @@ Next, with that gameObject, we're calling the `TryGetComponent` method. We've se
     void OnCollisionEnter(Collision other)
     {
         Debug.Log("Collision!");
-        
+
         if (other.gameObject.TryGetComponent(out PlayerBullet bullet))
         {
             Destroy(bullet.gameObject);

@@ -1,4 +1,4 @@
-# Unit 03b: More Pretty <!-- omit in toc -->
+# Unit 03_02: More Pretty <!-- omit in toc -->
 
 - [Introduction](#introduction)
 - [Goal](#goal)

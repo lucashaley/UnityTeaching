@@ -1,4 +1,4 @@
-# Unit 04: Physics <!-- omit in toc -->
+# Unit 04_01: Physics <!-- omit in toc -->
 
 - [Introduction](#introduction)
 - [Goal](#goal)
@@ -198,7 +198,7 @@ public class PlayerInput : MonoBehaviour
 GetComponent<Rigidbody>().AddForce(horizontalInput * physicalSpeed, 0f, verticalInput * physicalSpeed);
 ```
 
-Try out the game now. Feel free to change the `physicalSpeed` variable while playing the game. 
+Try out the game now. Feel free to change the `physicalSpeed` variable while playing the game.
 
 > You may notice that when the player gets up to speed, it starts wiggling! This is because it's a physical simulation, and the cube is dragging against the floor. There are a couple of things we can do to stop this from happening: reduce that friction, and lock the player's movement.
 

@@ -1,4 +1,4 @@
-# Unit 03: Player Input <!-- omit in toc -->
+# Unit 03_01: Player Input <!-- omit in toc -->
 
 - [Introduction](#introduction)
 - [Goal](#goal)
@@ -140,13 +140,13 @@ public class PlayerInput : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
 ```
@@ -231,7 +231,7 @@ public class PlayerInput : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -252,9 +252,9 @@ We now have variables storing the player keyboard input each frame. We can use t
 > We'll be looking at many different ways of moving things, but to start with we're going to use a simple `Transform` call.
 
 1. Open the `PlayerInput` script.
-2. After we collect the player input, we can apply it to the **transform** component –– which, if you remember, is where the position data is stored. 
+2. After we collect the player input, we can apply it to the **transform** component –– which, if you remember, is where the position data is stored.
 > Looking at the Unity documentation, we can see that the `Translate` method takes three inputs (and an optional fourth):
-> 
+>
 > `public void Translate(float x, float y, float z, Transform relativeTo);`
 >
 > In this case, we'll only need the x and z. The y value would make the player move towards and away from the camera, which we do not want.
