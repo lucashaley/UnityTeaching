@@ -1,4 +1,4 @@
-# Unit 02: Playing and Debugging <!-- omit in toc -->
+# Unit 02_01: Playing and Debugging <!-- omit in toc -->
 
 - [Introduction](#introduction)
 - [Goal](#goal)
@@ -86,13 +86,13 @@ public class DebugTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
 ```

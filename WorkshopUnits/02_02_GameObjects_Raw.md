@@ -6,7 +6,7 @@ markdown:
     absolute_image_path: false
 ---
 
-# Unit 02b: GameObject  <!-- omit in toc -->
+# Unit 02_02: GameObject  <!-- omit in toc -->
 
 - [Introduction](#introduction)
 - [Goal](#goal)

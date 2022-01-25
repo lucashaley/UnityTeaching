@@ -1,4 +1,4 @@
-# Unit 01: Assets <!-- omit in toc -->
+# Unit 01_01: Assets <!-- omit in toc -->
 
 - [Introduction](#introduction)
 - [Goal](#goal)
@@ -83,7 +83,7 @@ Now that we've made the cube, let's manipuate it. We can do this in two ways -- 
 > 2. Select the Translate gizmo (the W key).
 >
 > If the button is in **Local** space, the translate arrows align with the cube. If the button is in **World** space, the transpate arrows align with the world.
-> 
+>
 > <img src="images/01_LocalSpace.png" width="200"><img src="images/01_WorldSpace.png" width="200">
 >
 > You'll be using both modes for different reasons, but it's also just important to know this is there.

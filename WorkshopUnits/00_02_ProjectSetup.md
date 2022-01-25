@@ -1,4 +1,4 @@
-# Unit 00b: Project Setup <!-- omit in toc -->
+# Unit 00_02: Project Setup <!-- omit in toc -->
 
 - [Introduction](#introduction)
 - [Goal](#goal)
