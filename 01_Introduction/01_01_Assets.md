@@ -1,15 +1,15 @@
-# Unit 01_01: Assets <!-- omit in toc -->
+# Unit 01_01: Assets
 
+<!-- TOC START min:2 max:4 link:true asterisk:false update:true -->
 - [Introduction](#introduction)
 - [Goal](#goal)
 - [Process](#process)
   - [Creating simple geometry](#creating-simple-geometry)
     - [Manipulating the Cube](#manipulating-the-cube)
-      - [Using the Manipulator Gizmos](#using-the-manipulator-gizmos)
-      - [Using the Inspector Panel](#using-the-inspector-panel)
   - [Creating lights](#creating-lights)
 - [Wrap-Up](#wrap-up)
 - [Further Material](#further-material)
+<!-- TOC END -->
 
 ## Introduction
 
@@ -135,5 +135,11 @@ Unity has the ability to create many different types of assets within the engine
 - AudioSource
 
 And over the following weeks we'll be looking how each are made and manipulated.
+
+You should be comfortable with:
+
+- Creating simple geometry
+- Manipulating objects
+- The concept of a Component
 
 ## Further Material

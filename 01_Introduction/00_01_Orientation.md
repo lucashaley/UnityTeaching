@@ -1,5 +1,6 @@
-# Unit 00_01: Orientation <!-- omit in toc -->
+# Unit 00_01: Orientation
 
+<!-- TOC START min:2 max:4 link:true asterisk:false update:true -->
 - [Introduction](#introduction)
 - [Goal](#goal)
 - [Process](#process)
@@ -10,6 +11,7 @@
     - [Focusing](#focusing)
 - [Wrap-Up](#wrap-up)
 - [Further Material](#further-material)
+<!-- TOC END -->
 
 ## Introduction
 
@@ -29,9 +31,11 @@ Unity gets updated frequently, and often the different versions can have quite l
 
 ![Unity Hub](images/00_UnityHub.png)
 
-Open Unity Hub from the Start menu, and create a new project using version [[NEED VERSION FROM ITS]].
+Open Unity Hub from the Start menu, and create a new project using version **2020.3.26f1**.
 
-From the selection of templates, choose the "Massey" template, and let Unity open.
+From the selection of templates, choose the "3d Core" template, and let Unity open.
+
+![Unity Hub](images/00_3dcore.png)
 
 ### The User Interface
 
@@ -84,6 +88,12 @@ You can focus on an object by either double-clicking it in the Hierarchy, or by 
 ## Wrap-Up
 
 You should get as comfortable as possible in navigating around the Unity Scene. Keep exploring and trying different key strokes.
+
+You should become comfortable with:
+
+- the names of each panel
+- the Unity version we're using
+- how to manipulate the view
 
 ## Further Material
 

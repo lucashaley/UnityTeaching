@@ -1,10 +1,12 @@
-# Unit 00_02: Project Setup <!-- omit in toc -->
+# Unit 00_02: Project Setup
 
-- [Introduction](#introduction)
-- [Goal](#goal)
-- [Process](#process)
-- [Wrap-Up](#wrap-up)
-- [Further Material](#further-material)
+<!-- TOC START min:2 max:4 link:true asterisk:false update:true -->
+  - [Introduction](#introduction)
+  - [Goal](#goal)
+  - [Process](#process)
+  - [Wrap-Up](#wrap-up)
+  - [Further Material](#further-material)
+<!-- TOC END -->
 
 ## Introduction
 
