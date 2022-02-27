@@ -1,14 +1,14 @@
-#  Unit 02_02: GameObjects  <!-- omit in toc -->
+#  Unit 02_02: GameObjects
 
-
-- [Introduction](#introduction )
-- [Goal](#goal )
-- [Process](#process )
-- [Wrap-Up](#wrap-up )
-- [Further Material](#further-material )
+<!-- TOC START min:2 max:4 link:true asterisk:false update:true -->
+- [Introduction](#introduction)
+- [Goal](#goal)
+- [Process](#process)
+- [Wrap-Up](#wrap-up)
+- [Further Material](#further-material)
+<!-- TOC END -->
 
 ##  Introduction
-
 
 There are certain parts of Unity that are so important, they justify their own unit. This is the case for **GameObjects**.
 
@@ -65,7 +65,6 @@ And soon you'll end up with GameObjects that might look like:
 Later, we'll take a look at how to access these components using `GetComponent`.
 
 ##  Wrap-Up
-
 
 Understanding the GameObject is critical to success in game development. This pattern exists in pretty much every game engine (Pawns in Unreal, etc).
 

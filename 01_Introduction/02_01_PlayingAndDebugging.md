@@ -1,5 +1,6 @@
-# Unit 02_01: Playing and Debugging <!-- omit in toc -->
+# Unit 02_01: Playing and Debugging
 
+<!-- TOC START min:2 max:4 link:true asterisk:false update:true -->
 - [Introduction](#introduction)
 - [Goal](#goal)
 - [Process](#process)
@@ -9,6 +10,7 @@
 - [Wrap-Up](#wrap-up)
   - [Take Home 2.1: Debug.Log](#take-home-21-debuglog)
 - [Further Material](#further-material)
+<!-- TOC END -->
 
 ## Introduction
 
@@ -167,7 +169,14 @@ You can click on the **Collapse** button to toggle if your console shows each ti
 
 In this unit we took a look at how Unity handles playing out game, and how we can start to debug our code for errors. We'll be looking a lot more into coding and debugging throughout the course.
 
+You should feel comfortable with:
+
+- Starting and stopping the Play mode
+- Knowing where the Console is
+- How to create a basic Script
+
 ### Take Home 2.1: Debug.Log
+
 If you're ever having issues with your code, you can use `Debug.Log` to show what's going on under the hood.
 
 ## Further Material
